@@ -546,6 +546,53 @@ body.dark .hero p{
     transform:translateY(-4px);
 }
 
+/* 🎨🎵 CARD FLUTUANTE — Temas e Música */
+.barra-flutuante{
+    position:fixed;
+    bottom:calc(24px + env(safe-area-inset-bottom));
+    left:calc(24px + env(safe-area-inset-left));
+    display:flex;
+    gap:8px;
+    padding:8px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(32px) saturate(160%);
+    -webkit-backdrop-filter:blur(32px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    z-index:90;
+}
+
+.barra-flutuante button{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    border:none;
+    background:rgba(37,99,235,0.12);
+    font-size:1.3em;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+.barra-flutuante button:hover{
+    transform:translateY(-4px) scale(1.08);
+}
+
+body.dark .barra-flutuante{
+    background:rgba(8,25,38,0.55);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+body.dark .barra-flutuante button{
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+}
+
 /* Contraste melhorado no modo escuro */
 body.dark .capitulo-ref{
     opacity:.85;
@@ -1772,6 +1819,146 @@ body.dark .quiz-opt.selecionada{
 body.has-whatsapp-banner header{
     padding-top:calc(64px + env(safe-area-inset-top));
 }
+
+/* ===== TEMAS VISUAIS ===== */
+body.tema-festa{background:linear-gradient(180deg,#ffe4fa 0%,#facdf0 18%,#e879f9 34%,#c026d3 44%,#a21caf 50%,#86198f 62%,#581c5c 78%,#2e0a30 100%);}
+body.tema-copa{background:linear-gradient(180deg,#eafff0 0%,#bbf7d0 18%,#4ade80 34%,#22c55e 44%,#facc15 50%,#eab308 62%,#a16207 78%,#422006 100%);}
+body.tema-natal{background:linear-gradient(180deg,#ffe4e6 0%,#fecdd3 18%,#4ade80 34%,#16a34a 44%,#dc2626 50%,#b91c1c 62%,#7f1d1d 78%,#450a0a 100%);}
+body.tema-halloween{background:linear-gradient(180deg,#ffedd5 0%,#fed7aa 18%,#fb923c 34%,#ea580c 44%,#7c3aed 50%,#6d28d9 62%,#4c1d95 78%,#1e0a3c 100%);}
+
+body.tema-festa .toggle, body.tema-festa .super-prova-btn, body.tema-festa #themeBtn, body.tema-festa .btn-topo, body.tema-festa .barra-flutuante button{background:linear-gradient(135deg,#ec4899,#a855f7)!important;box-shadow:0 0 18px rgba(236,72,153,.45)!important;color:#fff!important;}
+body.tema-copa .toggle, body.tema-copa .super-prova-btn, body.tema-copa #themeBtn, body.tema-copa .btn-topo, body.tema-copa .barra-flutuante button{background:linear-gradient(135deg,#16a34a,#facc15)!important;box-shadow:0 0 18px rgba(22,163,74,.45)!important;color:#fff!important;}
+body.tema-natal .toggle, body.tema-natal .super-prova-btn, body.tema-natal #themeBtn, body.tema-natal .btn-topo, body.tema-natal .barra-flutuante button{background:linear-gradient(135deg,#dc2626,#16a34a)!important;box-shadow:0 0 18px rgba(220,38,38,.45)!important;color:#fff!important;}
+body.tema-halloween .toggle, body.tema-halloween .super-prova-btn, body.tema-halloween #themeBtn, body.tema-halloween .btn-topo, body.tema-halloween .barra-flutuante button{background:linear-gradient(135deg,#f97316,#7c3aed)!important;box-shadow:0 0 18px rgba(249,115,22,.45)!important;color:#fff!important;}
+
+.tema-decor{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+.tema-decor span{position:absolute;font-size:42px;opacity:.22;}
+.tema-decor span:nth-child(1){top:6%;left:4%;}
+.tema-decor span:nth-child(2){top:8%;right:5%;}
+.tema-decor span:nth-child(3){bottom:10%;left:6%;}
+.tema-decor span:nth-child(4){bottom:12%;right:4%;}
+.tema-decor span:nth-child(5){top:45%;left:50%;transform:translateX(-50%);}
+
+.temas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;}
+.tema-opcao{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:16px;border:2px solid transparent;background:rgba(37,99,235,0.08);cursor:pointer;font-weight:600;font-size:0.85em;color:inherit;}
+.tema-opcao .emoji{font-size:28px;}
+.tema-opcao.ativo{border-color:#2563eb;background:rgba(37,99,235,0.18);}
+body.dark .tema-opcao{background:rgba(255,255,255,0.08);}
+
+/* ⚙️ Linhas do modal de Configurações */
+.config-lista{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+.config-linha{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(37,99,235,0.08);font-weight:600;}
+.config-linha button{font-size:1.15em;}
+body.dark .config-linha{background:rgba(255,255,255,0.08);}
+
+/* ===== AVISO DE PROVA DO DIA (destaque na tela inicial) ===== */
+.aviso-prova-dia{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    padding:22px 16px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(32px) saturate(160%);
+    -webkit-backdrop-filter:blur(32px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.4);
+    border-top:4px solid #f59e0b;
+    margin:0 15px 18px;
+    transition:.3s;
+}
+.aviso-prova-dia:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(245,158,11,0.25);
+}
+.aviso-prova-dia .aviso-texto{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    font-size:1.1em;
+    color:inherit;
+}
+.aviso-prova-dia .aviso-icone{
+    font-size:1.6em;
+    animation:avisoPulso 1.6s ease-in-out infinite;
+}
+.aviso-prova-dia button{
+    background:#f59e0b;
+    color:#fff;
+    border:none;
+    padding:9px 16px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+}
+.aviso-prova-dia button:hover{background:#d97706;}
+body.dark .aviso-prova-dia{
+    background:rgba(8,25,38,0.55);
+    border:1px solid rgba(255,255,255,0.12);
+    border-top:4px solid #f59e0b;
+    box-shadow:0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+    color:#fff;
+}
+@keyframes avisoPulso{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.18);}
+}
+.questao-ilustracao{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:30px;
+    height:30px;
+    min-width:30px;
+    border-radius:9px;
+    background:rgba(37,99,235,0.14);
+    color:#1d4ed8;
+    margin-right:8px;
+    vertical-align:middle;
+    transform:translateY(-2px);
+}
+.questao-ilustracao svg{width:18px;height:18px;}
+body.dark .questao-ilustracao{background:rgba(96,165,250,0.22);color:#93c5fd;}
+
+.topico-ilustracao{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    min-width:22px;
+    border-radius:7px;
+    background:rgba(37,99,235,0.12);
+    color:#1d4ed8;
+    margin-right:6px;
+    vertical-align:middle;
+}
+.questao-ilustracao svg, .topico-ilustracao svg, .card-ilustracoes span svg{display:block;}
+.topico-ilustracao svg{width:13px;height:13px;}
+body.dark .topico-ilustracao{background:rgba(96,165,250,0.2);color:#93c5fd;}
+
+.card-ilustracoes{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:-6px 0 14px;
+}
+.card-ilustracoes span{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    border-radius:9px;
+    background:rgba(37,99,235,0.14);
+    color:#1d4ed8;
+}
+.card-ilustracoes span svg{width:16px;height:16px;}
+body.dark .card-ilustracoes span{background:rgba(96,165,250,0.22);color:#93c5fd;}
 </style>
 </head>
 
@@ -1794,6 +1981,7 @@ body.has-whatsapp-banner header{
 <div class="moon" aria-hidden="true"></div>
 <div class="sun" aria-hidden="true"></div>
 <div class="dark-bg-video" aria-hidden="true"></div>
+<div class="tema-decor" id="temaDecor" aria-hidden="true"></div>
 
 <!-- TELA DE ENTRADA (BOAS-VINDAS + LOGIN SÓ COM NOME) -->
 <div class="tela-login passo-boas-vindas" id="telaLogin">
@@ -1828,14 +2016,19 @@ body.has-whatsapp-banner header{
             <span class="conta-nome" id="contaNomeExibido">👋 Aluno</span>
             <button class="toggle conta-sair-btn" onclick="trocarConta()">Sair</button>
         </div>
-        <button class="toggle" id="musicaBtn" onclick="alternarMusica()" title="Música de fundo">🔇 Música</button>
-        <button class="toggle" id="themeBtn" onclick="modo()">Modo ☀️</button>
+        <button class="toggle" id="configBtn" onclick="abrirConfiguracoes()" title="Configurações">⚙️</button>
     </div>
 </header>
 
 <div class="hero">
     <h1>Portal de Estudos STUDY7</h1>
     <p id="saudacaoAluno">Escolha uma matéria e comece agora ou pergunte para a Study IA</p>
+</div>
+
+<!-- AVISO: hoje é dia de prova de Matemática -->
+<div class="aviso-prova-dia" id="avisoProvaDia">
+    <div class="aviso-texto"><span class="aviso-icone">📐</span> Hoje é dia de prova de Matemática! Aproveita pra revisar antes de ir.</div>
+    <button onclick="irParaMateria('matematica')">Estudar Matemática →</button>
 </div>
 
 <!-- ATALHOS RAPIDOS -->
@@ -2081,7 +2274,6 @@ body.has-whatsapp-banner header{
                 <li>🔹 Figuras de linguagem</li>
                 <li>🔹 Concordância verbal</li>
                 <li>🔹 Acentuação</li>
-                <li>🔹 Gêneros textuais</li>
             </ul>
         </div>
 
@@ -2185,6 +2377,23 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-provao">
             <h3>🏆 Provão Geral</h3>
             <span class="capitulo-ref">25 questões — 5 de cada matéria: Português, Matemática, Geografia, Ciências e História</span>
+            <svg viewBox="0 0 440 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:440px; height:auto; display:block; margin:12px auto;">
+                <circle cx="45" cy="45" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="45" y="58" font-size="30" text-anchor="middle">📖</text>
+                <text x="45" y="95" font-size="10.5" text-anchor="middle" fill="#334155">Português</text>
+                <circle cx="135" cy="45" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="135" y="58" font-size="30" text-anchor="middle">➗</text>
+                <text x="135" y="95" font-size="10.5" text-anchor="middle" fill="#334155">Matemática</text>
+                <circle cx="225" cy="45" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="225" y="58" font-size="30" text-anchor="middle">🌎</text>
+                <text x="225" y="95" font-size="10.5" text-anchor="middle" fill="#334155">Geografia</text>
+                <circle cx="315" cy="45" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="315" y="58" font-size="30" text-anchor="middle">🧪</text>
+                <text x="315" y="95" font-size="10.5" text-anchor="middle" fill="#334155">Ciências</text>
+                <circle cx="405" cy="45" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="405" y="58" font-size="30" text-anchor="middle">🏛️</text>
+                <text x="405" y="95" font-size="10.5" text-anchor="middle" fill="#334155">História</text>
+            </svg>
             <form id="prova-provao">
                 <div class="quiz-q">
                     <p>📖 Português — O sujeito de uma oração é:</p>
@@ -2215,11 +2424,11 @@ body.has-whatsapp-banner header{
                     <label class="quiz-opt"><input type="radio" name="p4" value="d"> d) A palavra não tem acento</label>
                 </div>
                 <div class="quiz-q">
-                    <p>📖 Português — Um texto que conta uma história com começo, meio e fim pertence ao gênero textual:</p>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="a"> a) Narrativo</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="b"> b) Argumentativo</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="c"> c) Instrucional</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="d"> d) Descritivo</label>
+                    <p>📖 Português — O verbo de ligação é aquele que:</p>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="a"> a) Liga o sujeito a uma característica, estado ou qualidade</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="b"> b) Indica uma ação praticada pelo sujeito</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="c"> c) Substitui o sujeito da oração</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="d"> d) Só aparece em orações negativas</label>
                 </div>
 
                 <div class="quiz-q">
@@ -2375,7 +2584,7 @@ body.has-whatsapp-banner header{
         <!-- PORTUGUÊS -->
         <div class="prova-panel" id="painel-prova-portugues">
             <h3>📖 Português</h3>
-            <span class="capitulo-ref">Baseado no conteúdo: Sujeito, Figuras de linguagem, Concordância verbal, Acentuação e Gêneros textuais</span>
+            <span class="capitulo-ref">Baseado no conteúdo: Sujeito, Figuras de linguagem, Concordância verbal e Acentuação</span>
             <form id="prova-portugues">
                 <div class="quiz-q">
                     <p>1. O sujeito de uma oração é:</p>
@@ -2406,62 +2615,73 @@ body.has-whatsapp-banner header{
                     <label class="quiz-opt"><input type="radio" name="p4" value="d"> d) A palavra não tem acento</label>
                 </div>
                 <div class="quiz-q">
-                    <p>5. Um texto que conta uma história com começo, meio e fim pertence ao gênero textual:</p>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="a"> a) Narrativo</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="b"> b) Argumentativo</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="c"> c) Instrucional</label>
-                    <label class="quiz-opt"><input type="radio" name="p5" value="d"> d) Descritivo</label>
+                    <p>5. O verbo de ligação é aquele que:</p>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="a"> a) Liga o sujeito a uma característica, estado ou qualidade</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="b"> b) Indica uma ação praticada pelo sujeito</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="c"> c) Substitui o sujeito da oração</label>
+                    <label class="quiz-opt"><input type="radio" name="p5" value="d"> d) Só aparece em orações negativas</label>
                 </div>
                 <div class="quiz-q">
-                    <p>6. O verbo de ligação é aquele que:</p>
-                    <label class="quiz-opt"><input type="radio" name="p6" value="a"> a) Liga o sujeito a uma característica, estado ou qualidade</label>
-                    <label class="quiz-opt"><input type="radio" name="p6" value="b"> b) Indica uma ação praticada pelo sujeito</label>
-                    <label class="quiz-opt"><input type="radio" name="p6" value="c"> c) Substitui o sujeito da oração</label>
-                    <label class="quiz-opt"><input type="radio" name="p6" value="d"> d) Só aparece em orações negativas</label>
+                    <p>6. Em "Amélia é linda como uma flor", a figura de linguagem usada é:</p>
+                    <label class="quiz-opt"><input type="radio" name="p6" value="a"> a) Metáfora</label>
+                    <label class="quiz-opt"><input type="radio" name="p6" value="b"> b) Comparação</label>
+                    <label class="quiz-opt"><input type="radio" name="p6" value="c"> c) Hipérbole</label>
+                    <label class="quiz-opt"><input type="radio" name="p6" value="d"> d) Onomatopeia</label>
                 </div>
                 <div class="quiz-q">
-                    <p>7. Em "Amélia é linda como uma flor", a figura de linguagem usada é:</p>
-                    <label class="quiz-opt"><input type="radio" name="p7" value="a"> a) Metáfora</label>
-                    <label class="quiz-opt"><input type="radio" name="p7" value="b"> b) Comparação</label>
-                    <label class="quiz-opt"><input type="radio" name="p7" value="c"> c) Hipérbole</label>
-                    <label class="quiz-opt"><input type="radio" name="p7" value="d"> d) Onomatopeia</label>
+                    <p>7. Em "A menina está feliz", o verbo de ligação é:</p>
+                    <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:360px; height:auto; display:block; margin:8px auto;">
+                        <rect x="10" y="15" width="100" height="34" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                        <text x="60" y="37" font-size="13" text-anchor="middle" fill="#1e3a8a" font-weight="bold">A menina</text>
+                        <text x="60" y="65" font-size="10" text-anchor="middle" fill="#334155">Sujeito</text>
+                        <rect x="130" y="15" width="90" height="34" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                        <text x="175" y="37" font-size="13" text-anchor="middle" fill="#78350f" font-weight="bold">está</text>
+                        <text x="175" y="65" font-size="10" text-anchor="middle" fill="#334155">Verbo de ligação</text>
+                        <rect x="240" y="15" width="110" height="34" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                        <text x="295" y="37" font-size="13" text-anchor="middle" fill="#14532d" font-weight="bold">feliz</text>
+                        <text x="295" y="65" font-size="10" text-anchor="middle" fill="#334155">Predicativo</text>
+                    </svg>
+                    <label class="quiz-opt"><input type="radio" name="p7" value="a"> a) Feliz</label>
+                    <label class="quiz-opt"><input type="radio" name="p7" value="b"> b) A menina</label>
+                    <label class="quiz-opt"><input type="radio" name="p7" value="c"> c) Está</label>
+                    <label class="quiz-opt"><input type="radio" name="p7" value="d"> d) Não há verbo de ligação</label>
                 </div>
                 <div class="quiz-q">
-                    <p>8. Em "A menina está feliz", o verbo de ligação é:</p>
-                    <label class="quiz-opt"><input type="radio" name="p8" value="a"> a) Feliz</label>
-                    <label class="quiz-opt"><input type="radio" name="p8" value="b"> b) A menina</label>
-                    <label class="quiz-opt"><input type="radio" name="p8" value="c"> c) Está</label>
-                    <label class="quiz-opt"><input type="radio" name="p8" value="d"> d) Não há verbo de ligação</label>
+                    <p>8. Em "O jantar ficou delicioso", o predicativo do sujeito é:</p>
+                    <label class="quiz-opt"><input type="radio" name="p8" value="a"> a) O jantar</label>
+                    <label class="quiz-opt"><input type="radio" name="p8" value="b"> b) Ficou</label>
+                    <label class="quiz-opt"><input type="radio" name="p8" value="c"> c) Delicioso</label>
+                    <label class="quiz-opt"><input type="radio" name="p8" value="d"> d) Não existe predicativo nessa frase</label>
                 </div>
                 <div class="quiz-q">
-                    <p>9. Em "O jantar ficou delicioso", o predicativo do sujeito é:</p>
-                    <label class="quiz-opt"><input type="radio" name="p9" value="a"> a) O jantar</label>
-                    <label class="quiz-opt"><input type="radio" name="p9" value="b"> b) Ficou</label>
-                    <label class="quiz-opt"><input type="radio" name="p9" value="c"> c) Delicioso</label>
-                    <label class="quiz-opt"><input type="radio" name="p9" value="d"> d) Não existe predicativo nessa frase</label>
+                    <p>9. Em "Estudamos muito ontem à noite", o sujeito da oração é:</p>
+                    <label class="quiz-opt"><input type="radio" name="p9" value="a"> a) Oculto (nós), identificado pela terminação do verbo</label>
+                    <label class="quiz-opt"><input type="radio" name="p9" value="b"> b) Inexistente</label>
+                    <label class="quiz-opt"><input type="radio" name="p9" value="c"> c) Composto</label>
+                    <label class="quiz-opt"><input type="radio" name="p9" value="d"> d) Indeterminado</label>
                 </div>
                 <div class="quiz-q">
-                    <p>10. Cada linha de um poema recebe o nome de:</p>
-                    <label class="quiz-opt"><input type="radio" name="p10" value="a"> a) Estrofe</label>
-                    <label class="quiz-opt"><input type="radio" name="p10" value="b"> b) Verso</label>
-                    <label class="quiz-opt"><input type="radio" name="p10" value="c"> c) Rima</label>
-                    <label class="quiz-opt"><input type="radio" name="p10" value="d"> d) Estribilho</label>
+                    <p>10. Em "Chorei rios de lágrimas por você", a figura de linguagem usada é:</p>
+                    <label class="quiz-opt"><input type="radio" name="p10" value="a"> a) Hipérbole (exagero proposital)</label>
+                    <label class="quiz-opt"><input type="radio" name="p10" value="b"> b) Metáfora</label>
+                    <label class="quiz-opt"><input type="radio" name="p10" value="c"> c) Comparação</label>
+                    <label class="quiz-opt"><input type="radio" name="p10" value="d"> d) Onomatopeia</label>
                 </div>
                 <div class="quiz-q">
-                    <p>11. O conjunto de vários versos forma uma:</p>
-                    <label class="quiz-opt"><input type="radio" name="p11" value="a"> a) Rima</label>
-                    <label class="quiz-opt"><input type="radio" name="p11" value="b"> b) Estrofe</label>
-                    <label class="quiz-opt"><input type="radio" name="p11" value="c"> c) Prosa</label>
-                    <label class="quiz-opt"><input type="radio" name="p11" value="d"> d) Crônica</label>
+                    <p>11. Assinale a alternativa com concordância verbal correta:</p>
+                    <label class="quiz-opt"><input type="radio" name="p11" value="a"> a) Os alunos chegaram atrasados</label>
+                    <label class="quiz-opt"><input type="radio" name="p11" value="b"> b) Os aluno chegou atrasado</label>
+                    <label class="quiz-opt"><input type="radio" name="p11" value="c"> c) Os alunos chegou atrasados</label>
+                    <label class="quiz-opt"><input type="radio" name="p11" value="d"> d) O aluno chegaram atrasado</label>
                 </div>
                 <div class="quiz-q">
-                    <p>12. A repetição de sons semelhantes no final dos versos é chamada de:</p>
-                    <label class="quiz-opt"><input type="radio" name="p12" value="a"> a) Estrofe</label>
-                    <label class="quiz-opt"><input type="radio" name="p12" value="b"> b) Verso</label>
-                    <label class="quiz-opt"><input type="radio" name="p12" value="c"> c) Rima</label>
-                    <label class="quiz-opt"><input type="radio" name="p12" value="d"> d) Métrica</label>
+                    <p>12. A palavra "café" é classificada, quanto à acentuação, como:</p>
+                    <label class="quiz-opt"><input type="radio" name="p12" value="a"> a) Oxítona (sílaba tônica na última sílaba)</label>
+                    <label class="quiz-opt"><input type="radio" name="p12" value="b"> b) Paroxítona</label>
+                    <label class="quiz-opt"><input type="radio" name="p12" value="c"> c) Proparoxítona</label>
+                    <label class="quiz-opt"><input type="radio" name="p12" value="d"> d) Monossílaba tônica</label>
                 </div>
-                <button type="button" class="corrigir-btn" onclick="corrigirProva('portugues', {p1:'a',p2:'b',p3:'a',p4:'c',p5:'a',p6:'a',p7:'b',p8:'c',p9:'c',p10:'b',p11:'b',p12:'c'})">✅ Corrigir prova</button>
+                <button type="button" class="corrigir-btn" onclick="corrigirProva('portugues', {p1:'a',p2:'b',p3:'a',p4:'c',p5:'a',p6:'b',p7:'c',p8:'c',p9:'a',p10:'a',p11:'a',p12:'a'})">✅ Corrigir prova</button>
                 <div class="prova-resultado" id="resultado-portugues"></div>
             </form>
         </div>
@@ -2470,6 +2690,23 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-matematica">
             <h3>➗ Matemática</h3>
             <span class="capitulo-ref">Baseado no caderno de 01/07 e 06/07 — equações, volume por deslocamento de água, expressões algébricas e sequências</span>
+            <svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:380px; height:auto; display:block; margin:12px auto;">
+                <rect x="15" y="90" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <text x="24" y="122" font-size="11" text-anchor="middle" fill="#334155">1ª</text>
+                <rect x="65" y="90" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <rect x="88" y="72" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <text x="86" y="122" font-size="11" text-anchor="middle" fill="#334155">2ª</text>
+                <rect x="140" y="90" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <rect x="163" y="72" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <rect x="186" y="54" width="18" height="18" fill="#60a5fa" stroke="#1d4ed8"/>
+                <text x="170" y="122" font-size="11" text-anchor="middle" fill="#334155">3ª</text>
+                <rect x="238" y="90" width="18" height="18" fill="#93c5fd" stroke="#1d4ed8" stroke-dasharray="3,2"/>
+                <rect x="261" y="72" width="18" height="18" fill="#93c5fd" stroke="#1d4ed8" stroke-dasharray="3,2"/>
+                <rect x="284" y="54" width="18" height="18" fill="#93c5fd" stroke="#1d4ed8" stroke-dasharray="3,2"/>
+                <rect x="307" y="36" width="18" height="18" fill="#93c5fd" stroke="#1d4ed8" stroke-dasharray="3,2"/>
+                <text x="272" y="122" font-size="11" text-anchor="middle" fill="#94a3b8">4ª?</text>
+                <text x="345" y="80" font-size="20" fill="#2563eb" font-weight="bold">?</text>
+            </svg>
             <form id="prova-matematica">
                 <div class="quiz-q">
                     <p>1. Resolva a equação: 3x + 2 = -x + 10. Qual é o valor de x?</p>
@@ -2515,6 +2752,14 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>7. Qual é o volume de um paralelepípedo com 14 cm de comprimento, 14 cm de largura e 10 cm de altura?</p>
+                    <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:260px; height:auto; display:block; margin:8px auto;">
+                        <polygon points="60,110 60,50 150,50 150,110" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2"/>
+                        <polygon points="60,50 90,25 180,25 150,50" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+                        <polygon points="150,50 180,25 180,85 150,110" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2"/>
+                        <text x="105" y="130" font-size="12" text-anchor="middle" fill="#1e3a8a">comprimento = 14 cm</text>
+                        <text x="30" y="82" font-size="12" text-anchor="middle" fill="#1e3a8a" transform="rotate(-90 30 82)">largura = 14 cm</text>
+                        <text x="205" y="60" font-size="12" text-anchor="middle" fill="#1e3a8a">altura = 10 cm</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="m7" value="a"> a) 1960 cm³</label>
                     <label class="quiz-opt"><input type="radio" name="m7" value="b"> b) 196 cm³</label>
                     <label class="quiz-opt"><input type="radio" name="m7" value="c"> c) 1400 cm³</label>
@@ -2555,7 +2800,33 @@ body.has-whatsapp-banner header{
                     <label class="quiz-opt"><input type="radio" name="m12" value="c"> c) Apenas números pares em ordem crescente</label>
                     <label class="quiz-opt"><input type="radio" name="m12" value="d"> d) Um tipo de equação do 2º grau</label>
                 </div>
-                <button type="button" class="corrigir-btn" onclick="corrigirProva('matematica', {m1:'b',m2:'c',m3:'b',m4:'b',m5:'a',m6:'a',m7:'a',m8:'b',m9:'a',m10:'b',m11:'c',m12:'a'})">✅ Corrigir prova</button>
+                <div class="quiz-q">
+                    <p>13. Observe a balança abaixo, que está em equilíbrio (representando uma equação). Qual é o valor de x?</p>
+                    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:420px; height:auto; display:block; margin:10px auto;">
+                        <rect x="192" y="150" width="16" height="70" fill="#94a3b8" rx="2"/>
+                        <rect x="150" y="216" width="100" height="10" fill="#94a3b8" rx="3"/>
+                        <polygon points="200,150 182,118 218,118" fill="#2563eb"/>
+                        <rect x="50" y="110" width="300" height="8" fill="#3b82f6" rx="4"/>
+                        <line x1="80" y1="118" x2="80" y2="155" stroke="#64748b" stroke-width="2"/>
+                        <line x1="150" y1="118" x2="150" y2="155" stroke="#64748b" stroke-width="2"/>
+                        <path d="M62,155 L168,155 L152,185 L78,185 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                        <rect x="90" y="128" width="34" height="30" fill="#fbbf24" stroke="#b45309" stroke-width="2" rx="5"/>
+                        <text x="107" y="150" font-size="18" text-anchor="middle" fill="#78350f" font-weight="bold">x</text>
+                        <rect x="128" y="132" width="24" height="24" fill="#34d399" stroke="#047857" stroke-width="2" rx="4"/>
+                        <text x="140" y="149" font-size="14" text-anchor="middle" fill="#064e3b" font-weight="bold">4</text>
+                        <line x1="250" y1="118" x2="250" y2="155" stroke="#64748b" stroke-width="2"/>
+                        <line x1="320" y1="118" x2="320" y2="155" stroke="#64748b" stroke-width="2"/>
+                        <path d="M232,155 L338,155 L322,185 L248,185 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                        <rect x="265" y="128" width="40" height="30" fill="#f87171" stroke="#b91c1c" stroke-width="2" rx="5"/>
+                        <text x="285" y="150" font-size="18" text-anchor="middle" fill="#7f1d1d" font-weight="bold">9</text>
+                        <text x="200" y="245" font-size="14" text-anchor="middle" fill="#334155">x + 4 = 9</text>
+                    </svg>
+                    <label class="quiz-opt"><input type="radio" name="m13" value="a"> a) x = 4</label>
+                    <label class="quiz-opt"><input type="radio" name="m13" value="b"> b) x = 5</label>
+                    <label class="quiz-opt"><input type="radio" name="m13" value="c"> c) x = 13</label>
+                    <label class="quiz-opt"><input type="radio" name="m13" value="d"> d) x = 36</label>
+                </div>
+                <button type="button" class="corrigir-btn" onclick="corrigirProva('matematica', {m1:'b',m2:'c',m3:'b',m4:'b',m5:'a',m6:'a',m7:'a',m8:'b',m9:'a',m10:'b',m11:'c',m12:'a',m13:'b'})">✅ Corrigir prova</button>
                 <div class="prova-resultado" id="resultado-matematica"></div>
             </form>
         </div>
@@ -2564,6 +2835,21 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-geografia">
             <h3>🌎 Geografia</h3>
             <span class="capitulo-ref">Baseado no conteúdo: Transporte, Agricultura e População</span>
+            <svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px; height:auto; display:block; margin:12px auto;">
+                <rect x="15" y="10" width="165" height="150" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <circle cx="35" cy="30" r="5" fill="#1d4ed8"/><circle cx="55" cy="25" r="5" fill="#1d4ed8"/><circle cx="80" cy="35" r="5" fill="#1d4ed8"/><circle cx="105" cy="22" r="5" fill="#1d4ed8"/><circle cx="130" cy="30" r="5" fill="#1d4ed8"/><circle cx="155" cy="25" r="5" fill="#1d4ed8"/>
+                <circle cx="30" cy="55" r="5" fill="#1d4ed8"/><circle cx="50" cy="60" r="5" fill="#1d4ed8"/><circle cx="72" cy="50" r="5" fill="#1d4ed8"/><circle cx="95" cy="58" r="5" fill="#1d4ed8"/><circle cx="118" cy="52" r="5" fill="#1d4ed8"/><circle cx="140" cy="60" r="5" fill="#1d4ed8"/><circle cx="162" cy="55" r="5" fill="#1d4ed8"/>
+                <circle cx="40" cy="82" r="5" fill="#1d4ed8"/><circle cx="62" cy="88" r="5" fill="#1d4ed8"/><circle cx="85" cy="80" r="5" fill="#1d4ed8"/><circle cx="108" cy="86" r="5" fill="#1d4ed8"/><circle cx="130" cy="82" r="5" fill="#1d4ed8"/><circle cx="152" cy="88" r="5" fill="#1d4ed8"/>
+                <circle cx="30" cy="110" r="5" fill="#1d4ed8"/><circle cx="52" cy="115" r="5" fill="#1d4ed8"/><circle cx="75" cy="108" r="5" fill="#1d4ed8"/><circle cx="98" cy="115" r="5" fill="#1d4ed8"/><circle cx="120" cy="110" r="5" fill="#1d4ed8"/><circle cx="145" cy="115" r="5" fill="#1d4ed8"/><circle cx="165" cy="110" r="5" fill="#1d4ed8"/>
+                <circle cx="45" cy="138" r="5" fill="#1d4ed8"/><circle cx="70" cy="142" r="5" fill="#1d4ed8"/><circle cx="95" cy="138" r="5" fill="#1d4ed8"/><circle cx="120" cy="142" r="5" fill="#1d4ed8"/><circle cx="145" cy="138" r="5" fill="#1d4ed8"/>
+                <text x="97" y="180" font-size="12.5" text-anchor="middle" fill="#1e3a8a" font-weight="bold">Área urbana</text>
+                <text x="97" y="196" font-size="11" text-anchor="middle" fill="#334155">alta densidade demográfica</text>
+
+                <rect x="220" y="10" width="165" height="150" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                <circle cx="255" cy="40" r="5" fill="#15803d"/><circle cx="320" cy="60" r="5" fill="#15803d"/><circle cx="270" cy="95" r="5" fill="#15803d"/><circle cx="345" cy="100" r="5" fill="#15803d"/><circle cx="300" cy="130" r="5" fill="#15803d"/><circle cx="360" cy="35" r="5" fill="#15803d"/>
+                <text x="302" y="180" font-size="12.5" text-anchor="middle" fill="#14532d" font-weight="bold">Área rural</text>
+                <text x="302" y="196" font-size="11" text-anchor="middle" fill="#334155">baixa densidade demográfica</text>
+            </svg>
             <form id="prova-geografia">
                 <div class="quiz-q">
                     <p>1. O modal de transporte mais utilizado no Brasil é o:</p>
@@ -2637,6 +2923,14 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>11. A conurbação ocorre quando:</p>
+                    <svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:340px; height:auto; display:block; margin:8px auto;">
+                        <circle cx="90" cy="65" r="55" fill="#dbeafe" stroke="#2563eb" stroke-width="2" opacity="0.85"/>
+                        <circle cx="220" cy="65" r="55" fill="#fee2e2" stroke="#dc2626" stroke-width="2" opacity="0.85"/>
+                        <text x="90" y="70" font-size="12" text-anchor="middle" fill="#1e3a8a" font-weight="bold">Cidade A</text>
+                        <text x="220" y="70" font-size="12" text-anchor="middle" fill="#7f1d1d" font-weight="bold">Cidade B</text>
+                        <text x="155" y="20" font-size="20" text-anchor="middle" fill="#334155">→</text>
+                        <text x="155" y="115" font-size="11" text-anchor="middle" fill="#334155">áreas urbanas se tocam e se fundem</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="g11" value="a"> a) Duas ou mais cidades crescem e suas áreas urbanas se unem, formando uma malha urbana contínua</label>
                     <label class="quiz-opt"><input type="radio" name="g11" value="b"> b) Uma cidade deixa de existir</label>
                     <label class="quiz-opt"><input type="radio" name="g11" value="c"> c) O campo se separa totalmente da cidade</label>
@@ -2658,6 +2952,19 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-ingles">
             <h3>🇬🇧 Inglês</h3>
             <span class="capitulo-ref">Baseado no conteúdo: Simple Past (verb to be, regular verbs e seus significados: be, want, wait, decide, walk, check, stop, turn, phone, make) e Famous People</span>
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px; height:auto; display:block; margin:12px auto;">
+                <line x1="30" y1="80" x2="370" y2="80" stroke="#2563eb" stroke-width="3"/>
+                <polygon points="370,80 358,73 358,87" fill="#2563eb"/>
+                <text x="35" y="105" font-size="12" fill="#334155">Passado</text>
+                <text x="335" y="105" font-size="12" fill="#334155">Agora</text>
+                <circle cx="140" cy="80" r="7" fill="#f87171" stroke="#b91c1c" stroke-width="2"/>
+                <rect x="90" y="20" width="100" height="30" rx="6" fill="#fee2e2" stroke="#f87171"/>
+                <text x="140" y="40" font-size="13" text-anchor="middle" fill="#7f1d1d" font-weight="bold">She walked</text>
+                <line x1="140" y1="50" x2="140" y2="73" stroke="#f87171" stroke-width="2" stroke-dasharray="3,2"/>
+                <circle cx="350" cy="80" r="6" fill="#2563eb"/>
+                <text x="350" y="60" font-size="11" text-anchor="middle" fill="#2563eb">now</text>
+                <text x="140" y="120" font-size="11.5" text-anchor="middle" fill="#334155">ação finalizada + terminação "-ed" (verbo regular)</text>
+            </svg>
             <form id="prova-ingles">
                 <div class="quiz-q">
                     <p>1. O Simple Past (passado simples), em inglês, é usado para descrever:</p>
@@ -2675,6 +2982,14 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>3. No passado (Simple Past), o verbo "to be" para I / he / she / it fica:</p>
+                    <svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:340px; height:auto; display:block; margin:8px auto;">
+                        <rect x="10" y="10" width="150" height="90" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                        <text x="85" y="32" font-size="13" text-anchor="middle" fill="#1e3a8a" font-weight="bold">I / He / She / It</text>
+                        <text x="85" y="70" font-size="22" text-anchor="middle" fill="#1d4ed8" font-weight="bold">was</text>
+                        <rect x="180" y="10" width="150" height="90" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                        <text x="255" y="32" font-size="13" text-anchor="middle" fill="#78350f" font-weight="bold">We / You / They</text>
+                        <text x="255" y="70" font-size="22" text-anchor="middle" fill="#b45309" font-weight="bold">were</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="ing3" value="a"> a) were</label>
                     <label class="quiz-opt"><input type="radio" name="ing3" value="b"> b) was</label>
                     <label class="quiz-opt"><input type="radio" name="ing3" value="c"> c) is</label>
@@ -2773,6 +3088,19 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-artes">
             <h3>🎨 Artes</h3>
             <span class="capitulo-ref">Baseado no conteúdo: Arte Indígena e Barroco</span>
+            <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px; height:auto; display:block; margin:12px auto;">
+                <circle cx="70" cy="65" r="50" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+                <text x="70" y="82" font-size="38" text-anchor="middle">🪶</text>
+                <text x="70" y="130" font-size="12.5" text-anchor="middle" fill="#78350f" font-weight="bold">Arte Indígena</text>
+                <text x="145" y="72" font-size="26" text-anchor="middle" fill="#64748b">+</text>
+                <circle cx="220" cy="65" r="50" fill="#fde68a" stroke="#b45309" stroke-width="2.5"/>
+                <text x="220" y="82" font-size="38" text-anchor="middle">⛪</text>
+                <text x="220" y="130" font-size="12.5" text-anchor="middle" fill="#78350f" font-weight="bold">Barroco</text>
+                <text x="295" y="72" font-size="26" text-anchor="middle" fill="#64748b">=</text>
+                <circle cx="355" cy="65" r="42" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+                <text x="355" y="78" font-size="32" text-anchor="middle">🎨</text>
+                <text x="355" y="130" font-size="11" text-anchor="middle" fill="#1e3a8a" font-weight="bold">Arte no Brasil Colonial</text>
+            </svg>
             <form id="prova-artes">
                 <div class="quiz-q">
                     <p>1. A arte indígena brasileira é caracterizada principalmente por:</p>
@@ -2804,6 +3132,14 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>5. Aleijadinho, um dos maiores nomes do Barroco no Brasil, é conhecido principalmente por:</p>
+                    <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:240px; height:auto; display:block; margin:8px auto;">
+                        <rect x="90" y="110" width="60" height="14" rx="2" fill="#a8a29e" stroke="#57534e"/>
+                        <path d="M100,110 C95,70 105,40 120,25 C135,40 145,70 140,110 Z" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+                        <circle cx="120" cy="30" r="12" fill="#e7e5e4" stroke="#57534e" stroke-width="2"/>
+                        <path d="M105,60 C100,50 105,45 115,48" stroke="#57534e" stroke-width="2" fill="none"/>
+                        <path d="M135,60 C140,50 135,45 125,48" stroke="#57534e" stroke-width="2" fill="none"/>
+                        <text x="120" y="135" font-size="11" text-anchor="middle" fill="#334155">Escultura barroca — pedra-sabão</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="art5" value="a"> a) Suas esculturas, como os Profetas de Congonhas</label>
                     <label class="quiz-opt"><input type="radio" name="art5" value="b"> b) Seus poemas</label>
                     <label class="quiz-opt"><input type="radio" name="art5" value="c"> c) Suas pinturas em aquarela</label>
@@ -2867,6 +3203,24 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-ciencias">
             <h3>🧪 Ciências</h3>
             <span class="capitulo-ref">Baseado no conteúdo: Cadeia Alimentar e Calor</span>
+            <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:440px; height:auto; display:block; margin:12px auto;">
+                <text x="30" y="55" font-size="30" text-anchor="middle">☀️</text>
+                <text x="30" y="80" font-size="10.5" text-anchor="middle" fill="#334155">Sol</text>
+                <line x1="55" y1="45" x2="90" y2="45" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow1)"/>
+                <text x="130" y="55" font-size="30" text-anchor="middle">🌱</text>
+                <text x="130" y="80" font-size="10.5" text-anchor="middle" fill="#166534" font-weight="bold">Produtor</text>
+                <line x1="155" y1="45" x2="190" y2="45" stroke="#94a3b8" stroke-width="2"/>
+                <polygon points="190,45 180,40 180,50" fill="#94a3b8"/>
+                <text x="230" y="55" font-size="30" text-anchor="middle">🐇</text>
+                <text x="230" y="80" font-size="10.5" text-anchor="middle" fill="#7c2d12" font-weight="bold">Consumidor</text>
+                <line x1="255" y1="45" x2="290" y2="45" stroke="#94a3b8" stroke-width="2"/>
+                <polygon points="290,45 280,40 280,50" fill="#94a3b8"/>
+                <text x="330" y="55" font-size="30" text-anchor="middle">🍄</text>
+                <text x="330" y="80" font-size="10.5" text-anchor="middle" fill="#7e22ce" font-weight="bold">Decompositor</text>
+                <path d="M330,90 C330,120 130,120 130,90" stroke="#94a3b8" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+                <polygon points="130,90 137,97 123,97" fill="#94a3b8"/>
+                <text x="230" y="135" font-size="11" text-anchor="middle" fill="#334155">nutrientes reciclados de volta ao solo</text>
+            </svg>
             <form id="prova-ciencias">
                 <div class="quiz-q">
                     <p>1. Os produtores são seres vivos que:</p>
@@ -2898,6 +3252,16 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>5. O equilíbrio térmico ocorre quando:</p>
+                    <svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:320px; height:auto; display:block; margin:8px auto;">
+                        <circle cx="70" cy="50" r="38" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
+                        <text x="70" y="57" font-size="14" text-anchor="middle" fill="#7f1d1d" font-weight="bold">80°C</text>
+                        <line x1="115" y1="50" x2="180" y2="50" stroke="#94a3b8" stroke-width="2"/>
+                        <polygon points="180,50 170,44 170,56" fill="#94a3b8"/>
+                        <text x="147" y="40" font-size="10.5" text-anchor="middle" fill="#334155">calor flui</text>
+                        <circle cx="235" cy="50" r="38" fill="#bfdbfe" stroke="#2563eb" stroke-width="2"/>
+                        <text x="235" y="57" font-size="14" text-anchor="middle" fill="#1e3a8a" font-weight="bold">20°C</text>
+                        <text x="152" y="100" font-size="11" text-anchor="middle" fill="#334155">até as duas temperaturas se igualarem</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="c5" value="a"> a) As temperaturas de dois corpos se igualam</label>
                     <label class="quiz-opt"><input type="radio" name="c5" value="b"> b) Um corpo perde toda sua energia</label>
                     <label class="quiz-opt"><input type="radio" name="c5" value="c"> c) Dois corpos têm massas iguais</label>
@@ -2961,6 +3325,26 @@ body.has-whatsapp-banner header{
         <div class="prova-panel" id="painel-prova-historia">
             <h3>🏛️ História</h3>
             <span class="capitulo-ref">Baseado no Capítulo 4 — "Reformas religiosas"</span>
+            <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:440px; height:auto; display:block; margin:12px auto;">
+                <line x1="30" y1="90" x2="410" y2="90" stroke="#92400e" stroke-width="3"/>
+                <polygon points="410,90 398,83 398,97" fill="#92400e"/>
+                <circle cx="70" cy="90" r="7" fill="#dc2626" stroke="#7f1d1d" stroke-width="2"/>
+                <text x="70" y="70" font-size="11" text-anchor="middle" fill="#7f1d1d" font-weight="bold">1517</text>
+                <text x="70" y="115" font-size="10.5" text-anchor="middle" fill="#334155">Lutero e as</text>
+                <text x="70" y="128" font-size="10.5" text-anchor="middle" fill="#334155">95 teses</text>
+                <circle cx="180" cy="90" r="7" fill="#2563eb" stroke="#1e3a8a" stroke-width="2"/>
+                <text x="180" y="70" font-size="11" text-anchor="middle" fill="#1e3a8a" font-weight="bold">1534</text>
+                <text x="180" y="115" font-size="10.5" text-anchor="middle" fill="#334155">Calvinismo</text>
+                <text x="180" y="128" font-size="10.5" text-anchor="middle" fill="#334155">(Calvino)</text>
+                <circle cx="290" cy="90" r="7" fill="#16a34a" stroke="#14532d" stroke-width="2"/>
+                <text x="290" y="70" font-size="11" text-anchor="middle" fill="#14532d" font-weight="bold">1534</text>
+                <text x="290" y="115" font-size="10.5" text-anchor="middle" fill="#334155">Anglicanismo</text>
+                <text x="290" y="128" font-size="10.5" text-anchor="middle" fill="#334155">(Henrique VIII)</text>
+                <circle cx="380" cy="90" r="7" fill="#a855f7" stroke="#581c87" stroke-width="2"/>
+                <text x="380" y="70" font-size="11" text-anchor="middle" fill="#581c87" font-weight="bold">1545</text>
+                <text x="380" y="115" font-size="10.5" text-anchor="middle" fill="#334155">Concílio de</text>
+                <text x="380" y="128" font-size="10.5" text-anchor="middle" fill="#334155">Trento</text>
+            </svg>
             <form id="prova-historia">
                 <div class="quiz-q">
                     <p>1. Quem foi o principal líder da Reforma Protestante, autor das 95 teses?</p>
@@ -2999,6 +3383,19 @@ body.has-whatsapp-banner header{
                 </div>
                 <div class="quiz-q">
                     <p>6. A venda de indulgências, criticada por Lutero, prometia:</p>
+                    <svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:340px; height:auto; display:block; margin:8px auto;">
+                        <text x="55" y="55" font-size="34" text-anchor="middle">🧑</text>
+                        <text x="55" y="85" font-size="10.5" text-anchor="middle" fill="#334155">Fiel</text>
+                        <text x="150" y="45" font-size="20" text-anchor="middle">💰</text>
+                        <line x1="90" y1="50" x2="200" y2="50" stroke="#94a3b8" stroke-width="2"/>
+                        <polygon points="200,50 190,44 190,56" fill="#94a3b8"/>
+                        <line x1="200" y1="65" x2="90" y2="65" stroke="#94a3b8" stroke-width="2"/>
+                        <polygon points="90,65 100,59 100,71" fill="#94a3b8"/>
+                        <text x="150" y="78" font-size="10" text-anchor="middle" fill="#334155">"perdão"</text>
+                        <text x="290" y="55" font-size="34" text-anchor="middle">⛪</text>
+                        <text x="290" y="85" font-size="10.5" text-anchor="middle" fill="#334155">Igreja</text>
+                        <text x="150" y="104" font-size="10.5" text-anchor="middle" fill="#7f1d1d">Lutero criticava essa prática</text>
+                    </svg>
                     <label class="quiz-opt"><input type="radio" name="h6" value="a"> a) O perdão dos pecados mediante pagamento</label>
                     <label class="quiz-opt"><input type="radio" name="h6" value="b"> b) A distribuição gratuita de terras</label>
                     <label class="quiz-opt"><input type="radio" name="h6" value="c"> c) A libertação de todos os prisioneiros</label>
@@ -3068,6 +3465,43 @@ body.has-whatsapp-banner header{
     </div>
 </div>
 
+<!-- 🎨 MODAL DE TEMAS VISUAIS -->
+<div class="modal" id="temasModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharTemas()">&times;</span>
+        <h2 style="margin-bottom:15px;color:#2563eb;">🎨 Temas visuais</h2>
+        <div class="temas-grid">
+            <button class="tema-opcao" data-tema="padrao" onclick="selecionarTema('padrao')"><span class="emoji">🌊</span>Padrão</button>
+            <button class="tema-opcao" data-tema="festa" onclick="selecionarTema('festa')"><span class="emoji">🎉</span>Festa</button>
+            <button class="tema-opcao" data-tema="copa" onclick="selecionarTema('copa')"><span class="emoji">⚽</span>Copa do Mundo</button>
+            <button class="tema-opcao" data-tema="natal" onclick="selecionarTema('natal')"><span class="emoji">🎄</span>Natal</button>
+            <button class="tema-opcao" data-tema="halloween" onclick="selecionarTema('halloween')"><span class="emoji">🎃</span>Halloween</button>
+        </div>
+    </div>
+</div>
+
+<!-- ⚙️ CONFIGURAÇÕES -->
+<div class="modal" id="configuracoesModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharConfiguracoes()">&times;</span>
+        <h2 style="margin-bottom:15px;color:#2563eb;">⚙️ Configurações</h2>
+        <div class="config-lista">
+            <div class="config-linha">
+                <span>Modo claro / escuro</span>
+                <button class="toggle" id="themeBtn" onclick="modo()" title="Alternar modo claro/escuro">☀️</button>
+            </div>
+            <div class="config-linha">
+                <span>Temas visuais</span>
+                <button class="toggle" onclick="fecharConfiguracoes(); abrirTemas();" title="Temas visuais">🎨</button>
+            </div>
+            <div class="config-linha">
+                <span>Música de fundo</span>
+                <button class="toggle" id="musicaBtnConfig" onclick="alternarMusica()" title="Tocar música de fundo">🔇</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 🧑‍🏫 PAINEL DO PROFESSOR - lista de contas criadas -->
 <div class="modal" id="painelProfessorModal">
     <div class="modal-content">
@@ -3084,6 +3518,12 @@ body.has-whatsapp-banner header{
 </footer>
 
 <button id="btnTopo" class="btn-topo" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Subir ao topo">Subir ao topo</button>
+
+<!-- CARD FLUTUANTE: Temas e Música -->
+<div class="barra-flutuante" id="barraFlutuante">
+    <button id="musicaBtn" onclick="alternarMusica()" title="Tocar música de fundo">🔇</button>
+    <button id="temasBtn" onclick="abrirTemas()" title="Temas visuais">🎨</button>
+</div>
 
 </div>
 
@@ -3221,7 +3661,7 @@ function modo(){
     const body = document.body;
     body.classList.toggle("dark");
     const btn = document.getElementById("themeBtn");
-    btn.innerHTML = body.classList.contains("dark") ? "Modo ☀️" : "Modo 🌙";
+    btn.innerHTML = body.classList.contains("dark") ? "☀️" : "🌙";
 }
 
 // Rolar suavemente até o card ou painel de tópicos da matéria selecionada
@@ -3594,13 +4034,8 @@ const conteudosEscritos = {
             <li><b>Figuras de linguagem:</b> recursos expressivos (metáfora, comparação, hipérbole etc.) usados para dar mais força e beleza ao texto.</li>
             <li><b>Concordância verbal:</b> o verbo deve concordar em número e pessoa com o sujeito da oração.</li>
             <li><b>Acentuação:</b> regras que indicam a sílaba tônica das palavras (oxítonas, paroxítonas, proparoxítonas).</li>
-            <li><b>Gêneros textuais:</b> formas que os textos assumem conforme sua finalidade (narrativo, descritivo, argumentativo etc.).</li>
             <li><b>Verbo de ligação:</b> liga o sujeito a uma característica, estado ou qualidade (e não a uma ação). Ex: "A menina <i>está</i> feliz".</li>
             <li><b>Predicativo do sujeito:</b> característica, estado ou qualidade atribuída ao sujeito por meio do verbo de ligação. Ex: em "O jantar ficou delicioso", o predicativo é "delicioso".</li>
-            <li><b>Verso:</b> cada linha de um poema.</li>
-            <li><b>Estrofe:</b> conjunto de vários versos.</li>
-            <li><b>Rima:</b> repetição de sons semelhantes no final dos versos.</li>
-            <li><b>Eu lírico:</b> voz que "fala" no poema e expressa os sentimentos (não é o autor real).</li>
         </ul>
 
         <h5 style="margin-top:14px;">🔤 Tipos de Sujeito</h5>
@@ -3822,10 +4257,10 @@ const exerciciosEscritos = {
             <li>6) Classifique o predicado: "O menino comprou um sorvete."</li>
             <li>7) Identifique a preposição na frase: "O livro está sobre a mesa."</li>
             <li>8) Reescreva como comparação (símile) em vez de metáfora: "Ele é um leão."</li>
-            <li>9) Qual é o gênero textual de uma receita de bolo?</li>
+            <li>9) Classifique quanto à acentuação: "útil".</li>
             <li>10) Acentue corretamente: "arvore", "sofa", "facil".</li>
         </ul>
-        <p style="opacity:.7; font-size:0.85em;">💡 Gabarito: 1) sujeito simples ("as crianças"); 2) livre (ex: "Ela está feliz"); 3) metáfora; 4) "Os alunos chegaram atrasados"; 5) com-pu-ta-dor, oxítona; 6) predicado verbal; 7) "sobre"; 8) "Ele é como um leão"; 9) instrucional; 10) árvore, sofá, fácil.</p>
+        <p style="opacity:.7; font-size:0.85em;">💡 Gabarito: 1) sujeito simples ("as crianças"); 2) livre (ex: "Ela está feliz"); 3) metáfora; 4) "Os alunos chegaram atrasados"; 5) com-pu-ta-dor, oxítona; 6) predicado verbal; 7) "sobre"; 8) "Ele é como um leão"; 9) paroxítona; 10) árvore, sofá, fácil.</p>
     `,
     'Matemática': `
         <h4>✍️ Exercícios — Matemática</h4>
@@ -4065,6 +4500,180 @@ window.onclick = function(event) {
     if (event.target == painel) {
         fecharPainelProfessor();
     }
+    const temas = document.getElementById("temasModal");
+    if (event.target == temas) {
+        fecharTemas();
+    }
+    const config = document.getElementById("configuracoesModal");
+    if (event.target == config) {
+        fecharConfiguracoes();
+    }
+}
+
+// ===== TEMAS VISUAIS =====
+const TEMA_EMOJIS = {
+    padrao: [], festa: ['🎉','🎊','🎈','🥳','🎇'], copa: ['⚽','🏆','🎽','🥅','🌟'],
+    natal: ['🎄','🎅','🔔','❄️','🎁'], halloween: ['🎃','👻','🕸️','🦇','🍬']
+};
+function aplicarDecoracaoTema(tema){
+    const decor = document.getElementById('temaDecor');
+    if(!decor) return;
+    decor.innerHTML = (TEMA_EMOJIS[tema] || []).map(e => `<span>${e}</span>`).join('');
+}
+function selecionarTema(tema){
+    document.body.classList.remove('tema-festa','tema-copa','tema-natal','tema-halloween');
+    if(tema !== 'padrao') document.body.classList.add('tema-' + tema);
+    document.querySelectorAll('.tema-opcao').forEach(b => b.classList.toggle('ativo', b.dataset.tema === tema));
+    aplicarDecoracaoTema(tema);
+    try{ window.storage.set('config:tema', tema, false); }catch(e){ /* ignora */ }
+}
+function abrirTemas(){ document.getElementById('temasModal').style.display = 'flex'; }
+function fecharTemas(){ document.getElementById('temasModal').style.display = 'none'; }
+function abrirConfiguracoes(){ document.getElementById('configuracoesModal').style.display = 'flex'; }
+function fecharConfiguracoes(){ document.getElementById('configuracoesModal').style.display = 'none'; }
+
+// ===== ILUSTRAÇÕES AUTOMÁTICAS NAS PROVAS (ícones em SVG, de acordo com o assunto de cada questão) =====
+// Cada categoria aponta para um "tipo" de ícone (ver ICONES_SVG), em vez de um emoji.
+const ILUSTRACAO_PALAVRAS = [
+    [['sujeito'],'sujeito'],[['verbo de ligacao','predicativo'],'link'],
+    [['figura de linguagem','metafora','comparacao'],'paleta'],[['concordancia'],'check'],
+    [['acentu','proparoxit','oxiton','paroxit'],'lapis'],
+    [['genero textual','narrativo','verso','estrofe','rima'],'livro'],
+    [['volume','cubo','paralelepipedo'],'cubo'],[['equacao'],'balanca-matematica'],
+    [['expressao algebrica'],'calculadora'],[['sequencia'],'numeros'],
+    [['transporte','rodoviario','ferroviario'],'onibus'],[['agricultura'],'trigo'],
+    [['densidade demografica','zona urbana','zona rural','conurbacao','favelizacao','urbanizacao'],'cidade'],
+    [['produtor','consumidor','decompositor','cadeia alimentar'],'folha'],
+    [['calor','temperatura','equilibrio termico'],'chama'],
+    [['especie','habitat','nicho','bioma','ecossistema'],'globo'],
+    [['lutero','reforma protestante'],'cruz'],[['calvino','calvinismo'],'igreja'],
+    [['anglicanismo','henrique'],'coroa'],[['concilio','contrarreforma','inquisicao','index'],'balanca'],
+    [['gutenberg','prensa'],'impressora'],[['simple past','verb to be','regular verb'],'relogio'],
+    [['who was','famous'],'estrela'],[['make','phone','check','wait','decide','walk','turn','stop'],'letras'],
+    [['indigena','marajoara','ceramica','plumaria','grafismo'],'pena'],
+    [['barroco','aleijadinho','igreja'],'igreja']
+];
+
+// Conjunto de ícones ilustrativos em SVG (estilo de linha, sem emojis), um por categoria de assunto.
+const ICONES_SVG = {
+    sujeito: '<circle cx="9" cy="6" r="3"/><path d="M4 21v-2a5 5 0 0 1 5-5h1"/><path d="M13 12l6-4"/><path d="M17 6l2 2"/>',
+    link: '<path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/>',
+    paleta: '<path d="M12 3a9 9 0 1 0 0 18c1 0 1.8-.8 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H16a5 5 0 0 0 5-5c0-4.4-4-7-9-7z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="9.5" cy="7" r="1"/><circle cx="13.5" cy="7" r="1"/><circle cx="16" cy="10" r="1"/>',
+    check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/>',
+    lapis: '<path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/>',
+    livro: '<path d="M3 6c3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0V6z"/><path d="M21 6c-3-1.5-6-1.5-9 0v13c3-1.5 6-1.5 9 0V6z"/>',
+    cubo: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 3v9M4 7.5l8 4.5 8-4.5"/>',
+    divisao: '<circle cx="12" cy="12" r="9"/><line x1="7" y1="12" x2="17" y2="12"/><circle cx="12" cy="8" r="1"/><circle cx="12" cy="16" r="1"/>',
+    'balanca-matematica': '<path d="M12 3v4"/><path d="M4 8h16"/><path d="M4 8l-2 5a3 3 0 0 0 6 0l-2-5"/><path d="M20 8l-2 5a3 3 0 0 0 6 0l-2-5"/><path d="M8 21h8"/><path d="M12 7v14"/><text x="2.6" y="12.6" font-size="4.6" stroke="none" fill="currentColor">x</text><text x="18.6" y="12.6" font-size="4.6" stroke="none" fill="currentColor">3</text>',
+    calculadora: '<rect x="5" y="3" width="14" height="18" rx="2"/><rect x="7" y="5" width="10" height="4"/><line x1="8" y1="13" x2="8" y2="13.01"/><line x1="12" y1="13" x2="12" y2="13.01"/><line x1="16" y1="13" x2="16" y2="13.01"/><line x1="8" y1="17" x2="8" y2="17.01"/><line x1="12" y1="17" x2="12" y2="17.01"/><line x1="16" y1="17" x2="16" y2="17.01"/>',
+    numeros: '<circle cx="5" cy="12" r="1.6"/><circle cx="10.5" cy="12" r="1.6"/><circle cx="16" cy="12" r="1.6"/><path d="M19 9l2 3-2 3"/>',
+    onibus: '<rect x="3" y="6" width="18" height="10" rx="2"/><line x1="3" y1="11" x2="21" y2="11"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/>',
+    trigo: '<path d="M12 21V9"/><path d="M12 9c-2-2-2-4 0-6 2 2 2 4 0 6z"/><path d="M12 13c-2-1-3-3-2-5 2 1 3 3 2 5z"/><path d="M12 13c2-1 3-3 2-5-2 1-3 3-2 5z"/><path d="M12 17c-2-1-3-3-2-5 2 1 3 3 2 5z"/><path d="M12 17c2-1 3-3 2-5-2 1-3 3-2 5z"/>',
+    cidade: '<path d="M3 21V9l5-4 5 4v12"/><path d="M13 21V6l4-2 4 2v15"/><line x1="3" y1="21" x2="21" y2="21"/>',
+    folha: '<path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16z"/><path d="M4 20c3-6 7-9 12-12"/>',
+    chama: '<path d="M12 21c4 0 6-3 6-6 0-3-2-4-3-7-1 3-3 3-3 6 0-2-2-3-2-5-3 2-4 5-4 6 0 3 2 6 6 6z"/>',
+    globo: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/>',
+    cruz: '<line x1="12" y1="3" x2="12" y2="21"/><line x1="7" y1="9" x2="17" y2="9"/>',
+    igreja: '<path d="M12 2v4"/><path d="M10 4h4"/><path d="M6 21V11l6-5 6 5v10"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/>',
+    coroa: '<path d="M4 18h16l-1-9-4 4-3-6-3 6-4-4-1 9z"/>',
+    balanca: '<line x1="12" y1="3" x2="12" y2="21"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6a3 3 0 0 0 6 0l-3-6z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0l-3-6z"/>',
+    impressora: '<rect x="5" y="8" width="14" height="8" rx="1"/><path d="M7 8V4h10v4"/><rect x="7" y="14" width="10" height="6"/>',
+    relogio: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="7" x2="12" y2="12"/><line x1="12" y1="12" x2="16" y2="14"/>',
+    estrela: '<path d="M12 2l3 6.5 7 .8-5.2 4.7 1.4 6.9-6.2-3.6-6.2 3.6 1.4-6.9L2 9.3l7-.8L12 2z"/>',
+    letras: '<rect x="3" y="8" width="6" height="8" rx="1"/><rect x="9.5" y="8" width="6" height="8" rx="1"/><rect x="16" y="8" width="5" height="8" rx="1"/>',
+    pena: '<path d="M20 4c-7 0-13 6-13 13v3h3c7 0 13-6 13-13V4z"/><line x1="10" y1="21" x2="20" y2="4"/>',
+    marcador: '<path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>'
+};
+
+// Monta o SVG completo (estilo de linha uniforme) para um tipo de ilustração
+function iconeSVG(tipo){
+    const miolo = ICONES_SVG[tipo] || ICONES_SVG.marcador;
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${miolo}</svg>`;
+}
+
+function ilustracaoParaTexto(texto){
+    const t = normalizarTexto(texto);
+    for(const [chaves, tipo] of ILUSTRACAO_PALAVRAS){
+        if(chaves.some(c => t.includes(normalizarTexto(c)))) return tipo;
+    }
+    return 'marcador';
+}
+function aplicarIlustracoesProvas(){
+    document.querySelectorAll('.prova-panel').forEach(painel => {
+        const perguntas = Array.from(painel.querySelectorAll('.quiz-q p'));
+        if(perguntas.length === 0) return;
+        const total = perguntas.length;
+        // Ilustra 60% das questões da prova, bem espalhadas ao longo dela
+        const alvo = Math.max(1, Math.round(total * 0.6));
+        const indices = selecionarIndicesEspalhados(total, alvo);
+        indices.forEach(i => {
+            const p = perguntas[i];
+            if(p.querySelector('.questao-ilustracao')) return;
+            const span = document.createElement('span');
+            span.className = 'questao-ilustracao';
+            span.setAttribute('aria-hidden', 'true');
+            span.innerHTML = iconeSVG(ilustracaoParaTexto(p.textContent));
+            p.insertBefore(span, p.firstChild);
+        });
+    });
+}
+
+// Escolhe até 7 índices bem espalhados dentro de uma lista de tamanho "total"
+function selecionarIndicesEspalhados(total, alvo){
+    if(total === 0) return [];
+    const alvoReal = Math.min(alvo, total);
+    const indices = new Set();
+    for(let i = 0; i < alvoReal; i++){
+        indices.add(Math.round(i * (total - 1) / Math.max(alvoReal - 1, 1)));
+    }
+    return [...indices].sort((a, b) => a - b);
+}
+
+// Ilustra 7 tópicos de cada matéria em "Matérias do Ano Todo" e devolve os emojis usados por matéria,
+// para reaproveitar na faixa de ilustrações dos cards de "Área de Estudos"
+function aplicarIlustracoesTopicos(){
+    const mapaIconesPorMateria = {};
+    document.querySelectorAll('.subject-panel').forEach(painel => {
+        const itens = Array.from(painel.querySelectorAll('li'));
+        if(itens.length === 0) return;
+        const classeMateria = Array.from(painel.classList).find(c => c !== 'subject-panel');
+        const indices = selecionarIndicesEspalhados(itens.length, 7);
+        const icones = [];
+
+        indices.forEach(i => {
+            const li = itens[i];
+            const tipo = ilustracaoParaTexto(li.textContent);
+            icones.push(tipo);
+            if(li.querySelector('.topico-ilustracao')) return;
+            const span = document.createElement('span');
+            span.className = 'topico-ilustracao';
+            span.setAttribute('aria-hidden', 'true');
+            span.innerHTML = iconeSVG(tipo);
+            li.insertBefore(span, li.firstChild);
+        });
+
+        if(classeMateria) mapaIconesPorMateria[classeMateria] = icones;
+    });
+    return mapaIconesPorMateria;
+}
+
+// Adiciona uma faixa com os 7 ícones da matéria no topo de cada card de "Área de Estudos"
+function aplicarIlustracoesCards(mapaIconesPorMateria){
+    document.querySelectorAll('.study-card').forEach(card => {
+        const classeMateria = Array.from(card.classList).find(c => mapaIconesPorMateria[c]);
+        const icones = classeMateria ? mapaIconesPorMateria[classeMateria] : null;
+        if(!icones || icones.length === 0) return;
+        if(card.querySelector('.card-ilustracoes')) return;
+
+        const titulo = card.querySelector('h3');
+        if(!titulo) return;
+
+        const faixa = document.createElement('div');
+        faixa.className = 'card-ilustracoes';
+        faixa.setAttribute('aria-hidden', 'true');
+        faixa.innerHTML = icones.map(tipo => `<span>${iconeSVG(tipo)}</span>`).join('');
+        titulo.insertAdjacentElement('afterend', faixa);
+    });
 }
 
 // IA
@@ -4081,7 +4690,6 @@ const respostas = {
     comparacao: "🎨 Comparação (ou símile) usa 'como' para comparar dois elementos. Ex: 'Forte como um touro.'",
     concordancia: "✅ Concordância verbal é quando o verbo concorda em número e pessoa com o sujeito. Ex: 'Nós somos amigos.'",
     acentuacao: "✍️ Acentuação indica a sílaba tônica: oxítona (última), paroxítona (penúltima) ou proparoxítona (antepenúltima).",
-    "genero textual": "📄 Gêneros textuais são as formas que um texto assume conforme sua finalidade: narrativo, descritivo, argumentativo, instrucional...",
     matematica: "➗ Matemática estuda números, formas, lógica e relações quantitativas.",
     fracao: "🥧 Fração representa partes de um todo. Ex: 1/2 = uma parte de duas iguais.",
     porcentagem: "💯 Porcentagem representa uma parte de 100. Ex: 50% = metade.",
@@ -4581,15 +5189,15 @@ function pararMusicaFundo(){
 }
 
 function alternarMusica(){
-    const btn = document.getElementById('musicaBtn');
+    const botoes = [document.getElementById('musicaBtn'), document.getElementById('musicaBtnConfig')].filter(Boolean);
     musicaAtiva = !musicaAtiva;
 
     if(musicaAtiva){
         iniciarMusicaFundo();
-        if(btn){ btn.textContent = '🎵 Música'; btn.title = 'Pausar música de fundo'; }
+        botoes.forEach(btn => { btn.textContent = '🎵'; btn.title = 'Pausar música de fundo'; });
     } else {
         pararMusicaFundo();
-        if(btn){ btn.textContent = '🔇 Música'; btn.title = 'Tocar música de fundo'; }
+        botoes.forEach(btn => { btn.textContent = '🔇'; btn.title = 'Tocar música de fundo'; });
     }
 
     try{ window.storage.set('config:musica', musicaAtiva ? '1' : '0', false); }catch(e){ /* ignora */ }
@@ -4646,13 +5254,39 @@ document.addEventListener('click', function(e){
 }, { capture: true, passive: true });
 
 // ===== INICIALIZAÇÃO =====
+// ===== AVISO DE VISITA (envia uma notificação push via ntfy.sh sempre que alguém abre o site) =====
+function notificarVisita(){
+    try{
+        const agora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+        fetch('https://ntfy.sh/study7-visitas-llhc0zicj6', {
+            method: 'POST',
+            body: `Alguém entrou no Study7 às ${agora}`,
+            headers: { 'Title': 'Study7 - Nova visita', 'Tags': 'bell,books' }
+        }).catch(() => { /* sem internet ou bloqueado por adblock: ignora silenciosamente */ });
+    }catch(e){ /* nunca deixa isso quebrar o carregamento do site */ }
+}
+
 window.addEventListener("load", function(){
+    notificarVisita();
     iniciarConta();
     ['provao','portugues','matematica','ciencias','historia','geografia','ingles','artes'].forEach(embaralharProva);
     inicializarMarcacaoQuestoes();
     inicializarSelecaoAlternativas();
+    aplicarIlustracoesProvas();
+    const iconesPorMateria = aplicarIlustracoesTopicos();
+    aplicarIlustracoesCards(iconesPorMateria);
     atualizarTodosProgressos();
     mostrarProva('provao'); // exibe uma prova por vez (evita mostrar todas ao mesmo tempo no PC)
+
+    // Restaura o tema visual salvo (padrão, festa, copa, natal, halloween)
+    (async () => {
+        let tema = 'padrao';
+        try{
+            const salvo = await window.storage.get('config:tema', false);
+            if(salvo && salvo.value) tema = salvo.value;
+        }catch(e){ /* sem tema salvo ainda */ }
+        selecionarTema(tema);
+    })();
 
     // Restaura preferência de música (mas nunca inicia automaticamente sem gesto do usuário,
     // pois os navegadores bloqueiam áudio sem interação prévia)
@@ -4660,8 +5294,10 @@ window.addEventListener("load", function(){
         try{
             const salvo = await window.storage.get('config:musica', false);
             if(salvo && salvo.value === '1'){
-                const btn = document.getElementById('musicaBtn');
-                if(btn) btn.title = 'Toque para retomar a música suave de fundo';
+                ['musicaBtn', 'musicaBtnConfig'].forEach(id => {
+                    const btn = document.getElementById(id);
+                    if(btn) btn.title = 'Toque para retomar a música suave de fundo';
+                });
             }
         }catch(e){ /* sem preferência salva ainda */ }
     })();
