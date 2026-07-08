@@ -3878,6 +3878,10 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
                 <span>Música de fundo</span>
                 <button class="toggle" id="musicaBtnConfig" onclick="alternarMusica()" title="Tocar música de fundo">🔇</button>
             </div>
+            <div class="config-linha">
+                <span>Painel do professor</span>
+                <button class="toggle" onclick="fecharConfiguracoes(); abrirPainelProfessor();" title="Ver histórico de quem entrou">🧑‍🏫</button>
+            </div>
         </div>
     </div>
 </div>
@@ -4848,6 +4852,10 @@ const exerciciosEscritos = {
 const videoAulasEscritos = {
     'Português': `
         <h4>🎥 Vídeo-aulas — Português</h4>
+        <p style="font-weight:700; margin-bottom:8px;">Classificação de sujeito e predicado</p>
+        <div style="position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+            <iframe src="https://www.youtube.com/embed/FTX9BACQxp4" title="Sujeito e predicado: o que você precisa saber" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
         <ul>
             <li><a href="https://pt.khanacademy.org/v/lp-7ano-video-sujeito-e-predicado" target="_blank" rel="noopener">Sujeito e predicado (Khan Academy)</a></li>
             <li><a href="https://www.youtube.com/watch?v=s2T9Ap2J7u0" target="_blank" rel="noopener">Concordância verbal — aula completa</a></li>
