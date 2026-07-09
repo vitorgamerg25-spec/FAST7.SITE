@@ -640,6 +640,7 @@ body.dark .provas-container > p.sub{
 .ano-todo{border-top:4px solid #eab308;}
 .cronograma{border-top:4px solid #ec4899;}
 .artes{border-top:4px solid #d946ef;}
+.producaotextual{border-top:4px solid #14b8a6;}
 .materias-prova{border-top:4px solid #0ea5e9;}
 
 /* ==================== CRONOGRAMA DE PROVAS ==================== */
@@ -2477,6 +2478,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <div class="card geografia" onclick="irParaMateria('geografia')">🌎 Geografia</div>
     <div class="card ingles" onclick="irParaMateria('ingles')">🇬🇧 Inglês</div>
     <div class="card artes" onclick="irParaMateria('artes')">🎨 Artes</div>
+    <div class="card producaotextual" onclick="irParaMateria('producaotextual')">✍️ Produção Textual</div>
     <div class="card provas" onclick="irParaProvas()">🧾 Provas</div>
     <div class="card ano-todo" onclick="irParaAnoTodo()">🗓️ Matérias do Ano Todo</div>
     <div class="card cronograma" onclick="irParaCronograma()">📅 Cronograma de Provas</div>
@@ -2649,6 +2651,21 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
             </div>
         </div>
 
+        <div class="study-card producaotextual" id="card-producaotextual">
+            <h3>✍️ Produção Textual</h3>
+            <div class="nota-aluno">
+                <span class="nota-valor">--</span>
+                <span class="nota-detalhe">Ainda sem nota</span>
+            </div>
+            <div class="study-actions">
+                <button onclick="abrirJanela('Produção Textual', 'exercicios')">✍️ Exercícios</button>
+                <button onclick="abrirJanela('Produção Textual', 'materiais')">📄 Materiais</button>
+                <button onclick="abrirJanela('Produção Textual', 'videoaulas')">🎥 Vídeo-aulas</button>
+                <button onclick="abrirJanela('Produção Textual', 'conteudo')">📚 Ver Matérias</button>
+                <button onclick="irParaProva('producaotextual')">🧾 Fazer Prova</button>
+            </div>
+        </div>
+
         <div class="study-card provao" id="card-provao">
             <h3>🏆 Provão Geral</h3>
             <p>25 questões — todas as matérias juntas</p>
@@ -2673,6 +2690,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <button class="provas-menu-btn" data-materia="geografia" onclick="abrirJanela('Geografia', 'conteudo')">🌎 Geografia<span>Ver Matérias</span></button>
         <button class="provas-menu-btn" data-materia="ingles" onclick="abrirJanela('Inglês', 'conteudo')">🇬🇧 Inglês<span>Ver Matérias</span></button>
         <button class="provas-menu-btn" data-materia="artes" onclick="abrirJanela('Artes', 'conteudo')">🎨 Artes<span>Ver Matérias</span></button>
+        <button class="provas-menu-btn" data-materia="producaotextual" onclick="abrirJanela('Produção Textual', 'conteudo')">✍️ Produção Textual<span>Ver Matérias</span></button>
     </div>
 </div>
 
@@ -2804,6 +2822,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <button class="provas-menu-btn" data-materia="historia" onclick="irParaProva('historia')">🏛️ História<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="ingles" onclick="irParaProva('ingles')">🇬🇧 Inglês<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="artes" onclick="irParaProva('artes')">🎨 Artes<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="producaotextual" onclick="irParaProva('producaotextual')">✍️ Produção Textual<span>Fazer Prova</span></button>
     </div>
 
     <div class="provas-list">
@@ -3742,6 +3761,96 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
             </form>
         </div>
 
+        <!-- PRODUÇÃO TEXTUAL -->
+        <div class="prova-panel" id="painel-prova-producaotextual">
+            <h3>✍️ Produção Textual</h3>
+            <span class="capitulo-ref">Baseado no conteúdo: Poema Visual</span>
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:320px; height:auto; display:block; margin:12px auto;">
+                <rect x="10" y="10" width="300" height="80" rx="10" fill="#ccfbf1" stroke="#14b8a6" stroke-width="2.5"/>
+                <text x="45" y="35" font-size="11" text-anchor="middle" fill="#0f766e">chu</text>
+                <text x="70" y="45" font-size="11" text-anchor="middle" fill="#0f766e">va</text>
+                <text x="100" y="55" font-size="11" text-anchor="middle" fill="#0f766e">chuva</text>
+                <text x="140" y="65" font-size="11" text-anchor="middle" fill="#0f766e">chu va</text>
+                <text x="185" y="75" font-size="11" text-anchor="middle" fill="#0f766e">chuva chuva</text>
+                <text x="235" y="30" font-size="24" text-anchor="middle">🌧️</text>
+                <text x="160" y="95" font-size="10.5" text-anchor="middle" fill="#0f766e" font-weight="bold">As palavras "desenham" o tema</text>
+            </svg>
+            <form id="prova-producaotextual">
+                <div class="quiz-q">
+                    <p>1. O que define um poema visual?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt1" value="a"> a) A rima perfeita entre os versos</label>
+                    <label class="quiz-opt"><input type="radio" name="pt1" value="b"> b) A disposição das palavras na página forma um desenho relacionado ao tema</label>
+                    <label class="quiz-opt"><input type="radio" name="pt1" value="c"> c) O uso obrigatório de quatro estrofes</label>
+                    <label class="quiz-opt"><input type="radio" name="pt1" value="d"> d) A ausência total de palavras</label>
+                </div>
+                <div class="quiz-q">
+                    <p>2. No poema visual, além das palavras, o que ajuda a comunicar o sentido do texto?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt2" value="a"> a) A imagem/desenho formado pela disposição das palavras</label>
+                    <label class="quiz-opt"><input type="radio" name="pt2" value="b"> b) A rima entre os versos</label>
+                    <label class="quiz-opt"><input type="radio" name="pt2" value="c"> c) O número de sílabas de cada verso</label>
+                    <label class="quiz-opt"><input type="radio" name="pt2" value="d"> d) O uso de letra cursiva</label>
+                </div>
+                <div class="quiz-q">
+                    <p>3. Um poema visual sobre o tema "chuva" provavelmente vai organizar as palavras:</p>
+                    <label class="quiz-opt"><input type="radio" name="pt3" value="a"> a) Sempre em uma única linha reta</label>
+                    <label class="quiz-opt"><input type="radio" name="pt3" value="b"> b) De forma que lembrem visualmente gotas ou uma cascata caindo</label>
+                    <label class="quiz-opt"><input type="radio" name="pt3" value="c"> c) Em ordem alfabética</label>
+                    <label class="quiz-opt"><input type="radio" name="pt3" value="d"> d) Sem nenhuma relação com o tema</label>
+                </div>
+                <div class="quiz-q">
+                    <p>4. No poema visual, o que costuma ter tanta importância quanto (ou mais que) as palavras?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt4" value="a"> a) A capa do livro</label>
+                    <label class="quiz-opt"><input type="radio" name="pt4" value="b"> b) A forma visual/gráfica em que elas são organizadas</label>
+                    <label class="quiz-opt"><input type="radio" name="pt4" value="c"> c) O nome do autor</label>
+                    <label class="quiz-opt"><input type="radio" name="pt4" value="d"> d) O número de páginas</label>
+                </div>
+                <div class="quiz-q">
+                    <p>5. Qual é a principal diferença entre o poema tradicional e o poema visual?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt5" value="a"> a) O poema visual não pode ter tema</label>
+                    <label class="quiz-opt"><input type="radio" name="pt5" value="b"> b) O tradicional se organiza em versos/estrofes com métrica e rima; o visual dá tanto ou mais peso à forma gráfica</label>
+                    <label class="quiz-opt"><input type="radio" name="pt5" value="c"> c) Não existe diferença</label>
+                    <label class="quiz-opt"><input type="radio" name="pt5" value="d"> d) O poema visual só pode ser escrito em outro idioma</label>
+                </div>
+                <div class="quiz-q">
+                    <p>6. Em um poema visual, o uso do espaço em branco na página serve para:</p>
+                    <label class="quiz-opt"><input type="radio" name="pt6" value="a"> a) Fazer parte do sentido do poema, ajudando a formar a imagem</label>
+                    <label class="quiz-opt"><input type="radio" name="pt6" value="b"> b) Corrigir erros de digitação</label>
+                    <label class="quiz-opt"><input type="radio" name="pt6" value="c"> c) Substituir o título</label>
+                    <label class="quiz-opt"><input type="radio" name="pt6" value="d"> d) Indicar o fim do poema, sem nenhum outro papel</label>
+                </div>
+                <div class="quiz-q">
+                    <p>7. Repetir uma palavra ou letra várias vezes dentro de um poema visual costuma servir para:</p>
+                    <label class="quiz-opt"><input type="radio" name="pt7" value="a"> a) Preencher e ajudar a formar o desenho do poema</label>
+                    <label class="quiz-opt"><input type="radio" name="pt7" value="b"> b) Aumentar o número de estrofes obrigatórias</label>
+                    <label class="quiz-opt"><input type="radio" name="pt7" value="c"> c) Corrigir erros de ortografia</label>
+                    <label class="quiz-opt"><input type="radio" name="pt7" value="d"> d) Substituir a pontuação por vírgulas</label>
+                </div>
+                <div class="quiz-q">
+                    <p>8. Antes de escrever um poema visual, o que é recomendado planejar primeiro?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt8" value="a"> a) O tema e a forma/desenho que combina com ele</label>
+                    <label class="quiz-opt"><input type="radio" name="pt8" value="b"> b) Apenas o número de palavras difíceis</label>
+                    <label class="quiz-opt"><input type="radio" name="pt8" value="c"> c) A editora que vai publicar</label>
+                    <label class="quiz-opt"><input type="radio" name="pt8" value="d"> d) O tamanho da letra usada</label>
+                </div>
+                <div class="quiz-q">
+                    <p>9. Na revisão de um poema visual pronto, o que vale a pena conferir?</p>
+                    <label class="quiz-opt"><input type="radio" name="pt9" value="a"> a) Se rima com um poema de outro autor</label>
+                    <label class="quiz-opt"><input type="radio" name="pt9" value="b"> b) Se dá pra reconhecer o tema só de olhar a forma, mesmo antes de ler as palavras</label>
+                    <label class="quiz-opt"><input type="radio" name="pt9" value="c"> c) Se tem exatamente 14 versos</label>
+                    <label class="quiz-opt"><input type="radio" name="pt9" value="d"> d) Se usa apenas letras maiúsculas</label>
+                </div>
+                <div class="quiz-q">
+                    <p>10. Um bom rascunho de poema visual costuma começar por:</p>
+                    <label class="quiz-opt"><input type="radio" name="pt10" value="a"> a) Desenhar a forma a lápis e depois encaixar as palavras dentro dela</label>
+                    <label class="quiz-opt"><input type="radio" name="pt10" value="b"> b) Escolher a rima antes de tudo</label>
+                    <label class="quiz-opt"><input type="radio" name="pt10" value="c"> c) Contar o número de sílabas de cada palavra</label>
+                    <label class="quiz-opt"><input type="radio" name="pt10" value="d"> d) Escrever sem nenhum planejamento</label>
+                </div>
+                <button type="button" class="corrigir-btn" onclick="corrigirProva('producaotextual', {pt1:'b',pt2:'a',pt3:'b',pt4:'b',pt5:'b',pt6:'a',pt7:'a',pt8:'a',pt9:'b',pt10:'a'})">✅ Corrigir prova</button>
+                <div class="prova-resultado" id="resultado-producaotextual"></div>
+            </form>
+        </div>
+
         <!-- CIÊNCIAS -->
         <div class="prova-panel" id="painel-prova-ciencias">
             <h3>🧪 Ciências</h3>
@@ -4336,7 +4445,7 @@ const CRONOGRAMA_PROVAS = {
     '2026-07-08': [ { nome:'Matemática',       id:'matematica', icone:'📐' } ],
     '2026-07-09': [ { nome:'Português',        id:'portugues',  icone:'📖' } ],
     '2026-07-10': [ { nome:'Artes',            id:'artes',      icone:'🎨' },
-                     { nome:'Produção Textual', id:'portugues',  icone:'✍️' } ],
+                     { nome:'Produção Textual', id:'producaotextual', icone:'✍️' } ],
     '2026-07-13': [ { nome:'Geografia',        id:'geografia',  icone:'🌎' },
                      { nome:'Ciências',         id:'ciencias',   icone:'🧪' } ],
     '2026-07-14': [ { nome:'História',         id:'historia',   icone:'🏛️' },
@@ -4805,6 +4914,23 @@ const conteudosEscritos = {
             <li><b>Predicado verbal:</b> tem como núcleo um verbo de ação. Ex: "O aluno fez o trabalho".</li>
             <li><b>Predicado nominal:</b> tem como núcleo uma característica do sujeito, ligada por um verbo de ligação.</li>
             <li><b>Predicado verbo-nominal:</b> mistura ação e característica ao mesmo tempo — tem os dois núcleos: um verbal e um nominal.</li>
+        </ul>
+    `,
+    'Produção Textual': `
+        <h4>🎨 Poema Visual (resumo)</h4>
+        <ul>
+            <li><b>O que é:</b> poema em que a disposição das palavras e letras na página forma um desenho relacionado ao tema do texto — a imagem também comunica sentido, não só as palavras.</li>
+            <li><b>Características:</b> pouca ou nenhuma pontuação tradicional, palavras organizadas em formato de imagem (ex: um poema sobre "chuva" com as palavras caindo em cascata), uso do espaço em branco como parte do sentido.</li>
+            <li><b>Diferença para o poema tradicional:</b> no poema tradicional a estrutura é em versos e estrofes com métrica/rima; no poema visual, a forma visual é tão importante quanto (ou mais que) o som e o ritmo das palavras.</li>
+            <li><b>Palavras-chave e imagem:</b> ao escrever um poema visual, primeiro se escolhe o tema (ex: coração, chuva, árvore) e depois se organiza as palavras no papel de forma que o conjunto lembre visualmente esse tema.</li>
+            <li><b>Repetição como recurso:</b> repetir uma palavra ou letra várias vezes é comum no poema visual, ajudando a preencher e formar o desenho.</li>
+        </ul>
+
+        <h5 style="margin-top:14px;">✍️ Na hora de produzir o seu</h5>
+        <ul>
+            <li><b>Planejamento:</b> escolha o tema e pense em qual forma/desenho combina com ele antes de começar a escrever.</li>
+            <li><b>Rascunho do desenho:</b> vale desenhar a forma a lápis primeiro e depois encaixar as palavras dentro dela.</li>
+            <li><b>Revisão:</b> depois de pronto, confira se dá pra reconhecer o tema só de olhar a forma, mesmo antes de ler as palavras.</li>
         </ul>
     `,
     'História': `
