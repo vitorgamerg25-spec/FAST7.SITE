@@ -1730,6 +1730,120 @@ body.dark .chat-sugestoes-input textarea{
     flex-direction:column;
     align-items:flex-start;
     gap:4px;
+    width:100%;
+}
+
+/* Bolha da resposta do professor, dentro do chat do aluno */
+.chat-bolha-prof{
+    align-self:flex-start;
+    background:rgba(var(--brand-rgb),0.12);
+    border:1px solid rgba(var(--brand-rgb),0.3);
+    color:var(--ink);
+    border-bottom-left-radius:4px;
+}
+
+body.dark .chat-bolha-prof{
+    background:rgba(255,255,255,0.08);
+    border-color:rgba(255,255,255,0.18);
+}
+
+.chat-bolha-prof .rotulo-prof{
+    font-weight:700;
+    font-size:12px;
+    color:var(--brand);
+    margin-bottom:2px;
+}
+
+.chat-bolha-prof small{
+    opacity:.6;
+    font-size:11px;
+}
+
+/* Área de resposta no painel do professor */
+.sugestao-resposta-existente{
+    margin-top:6px;
+    padding:8px 10px;
+    border-radius:10px;
+    background:rgba(var(--brand-rgb),0.1);
+    border-left:3px solid var(--brand);
+    font-size:13px;
+    width:100%;
+    box-sizing:border-box;
+}
+
+.sugestao-resposta-existente b{
+    color:var(--brand);
+}
+
+.btn-responder-sugestao{
+    border:none;
+    border-radius:999px;
+    padding:5px 12px;
+    background:transparent;
+    color:var(--brand);
+    border:1px solid rgba(var(--brand-rgb),0.4);
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:4px;
+}
+
+.btn-responder-sugestao:hover{
+    background:rgba(var(--brand-rgb),0.1);
+}
+
+.sugestao-resposta-form{
+    display:flex;
+    gap:6px;
+    width:100%;
+    margin-top:6px;
+    align-items:flex-end;
+}
+
+.sugestao-resposta-form textarea{
+    flex:1;
+    resize:none;
+    border-radius:10px;
+    border:1px solid rgba(var(--brand-rgb),0.3);
+    padding:8px 10px;
+    font-family:inherit;
+    font-size:13px;
+    background:transparent;
+    color:inherit;
+}
+
+body.dark .sugestao-resposta-form textarea{
+    border-color:rgba(255,255,255,0.2);
+}
+
+.btn-enviar-resposta-sugestao{
+    white-space:nowrap;
+    border:none;
+    border-radius:10px;
+    padding:8px 14px;
+    background:linear-gradient(135deg, var(--brand), var(--brand-light));
+    color:#fff;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+}
+
+/* Bolinha vermelha no botão de sugestões avisando o aluno que o professor respondeu */
+.toggle.tem-resposta-nova{
+    position:relative;
+}
+
+.toggle.tem-resposta-nova::after{
+    content:"";
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#ff3b30;
+    border:2px solid var(--bg, #fff);
+    box-shadow:0 0 0 1px rgba(0,0,0,0.15);
 }
 
 .badge-entrada{
@@ -4235,11 +4349,11 @@ function juntarComE(nomes){
     return nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1];
 }
 
-// A partir das 18:00, o aviso já passa a mostrar a prova do dia SEGUINTE (pra dar tempo de estudar à noite).
-// Antes das 18:00, mostra a prova do próprio dia.
+// A partir das 15:00 (três da tarde), o aviso já passa a mostrar a prova do dia SEGUINTE (pra dar tempo de estudar à noite).
+// Antes das 15:00, mostra a prova do próprio dia.
 function obterDataReferenciaAviso(agora){
     const dataRef = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
-    if(agora.getHours() >= 18){
+    if(agora.getHours() >= 15){
         dataRef.setDate(dataRef.getDate() + 1);
     }
     return dataRef;
@@ -4252,7 +4366,7 @@ function atualizarAvisoProvaDia(){
     const agora = new Date();
     const dataRef = obterDataReferenciaAviso(agora);
     const chave = dataRef.getFullYear() + '-' + String(dataRef.getMonth() + 1).padStart(2, '0') + '-' + String(dataRef.getDate()).padStart(2, '0');
-    const ehAmanha = agora.getHours() >= 18;
+    const ehAmanha = agora.getHours() >= 15;
     const provasHoje = CRONOGRAMA_PROVAS[chave];
 
     if(!provasHoje || provasHoje.length === 0){
@@ -4276,14 +4390,14 @@ function atualizarAvisoProvaDia(){
     aviso.style.display = 'flex';
 }
 
-// Calcula o próximo horário de virada: toda meia-noite (00:00) E toda 18:00.
+// Calcula o próximo horário de virada: toda meia-noite (00:00) E toda 15:00 (três da tarde).
 function proximoHorarioAtualizacaoAviso(agora){
-    const hoje18h = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 18, 0, 5);
+    const hoje15h = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 15, 0, 5);
     const amanha0h = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate() + 1, 0, 0, 5);
-    return agora < hoje18h ? hoje18h : amanha0h;
+    return agora < hoje15h ? hoje15h : amanha0h;
 }
 
-// Agenda a próxima virada (18:00 ou 00:00) pra atualizar o aviso sozinho, sem precisar recarregar a página.
+// Agenda a próxima virada (15:00 ou 00:00) pra atualizar o aviso sozinho, sem precisar recarregar a página.
 function agendarAtualizacaoAvisoProva(){
     const agora = new Date();
     const proximo = proximoHorarioAtualizacaoAviso(agora);
@@ -5771,6 +5885,12 @@ function entrarComNome(nome, salvar){
     }
 
     registrarEntrada(primeiroNome, salvar ? 'nova_conta' : 'retorno');
+
+    // Confere se o professor respondeu alguma sugestão enquanto o aluno estava fora,
+    // e de tempos em tempos enquanto ele estiver usando o site.
+    verificarNovaRespostaSugestao();
+    if(intervaloVerificacaoRespostas) clearInterval(intervaloVerificacaoRespostas);
+    intervaloVerificacaoRespostas = setInterval(verificarNovaRespostaSugestao, 60000);
 }
 
 // Guarda um registro (compartilhado) de cada entrada no site — conta nova ou aluno que já tinha conta
@@ -5892,6 +6012,7 @@ function abrirSugestoes(){
     document.getElementById('sugestoesModal').style.display = 'flex';
     carregarSugestoesLocais();
     setTimeout(() => document.getElementById('inputSugestao')?.focus(), 250);
+    limparAvisoRespostaSugestao();
 }
 
 function fecharSugestoes(){
@@ -5899,13 +6020,84 @@ function fecharSugestoes(){
 }
 
 async function carregarSugestoesLocais(){
+    let minhas = [];
+    try {
+        const atual = await window.storage.get(CHAVE_SUGESTOES_LOCAL, false);
+        minhas = (atual && atual.value) ? JSON.parse(atual.value) : [];
+    } catch(e) {
+        minhas = [];
+    }
+
+    renderizarChatSugestoes(minhas); // mostra o que já tem enquanto busca por respostas novas
+
+    // Confere na fonte compartilhada se alguma das sugestões já foi respondida
+    try {
+        const atualizadas = await buscarSugestoesDaFonte();
+        if(atualizadas && atualizadas.length){
+            const porId = {};
+            atualizadas.forEach(r => { if(r && r.id) porId[r.id] = r; });
+
+            let mudou = false;
+            minhas = minhas.map(m => {
+                const encontrada = m.id ? porId[m.id] : null;
+                if(encontrada && encontrada.resposta && encontrada.resposta !== m.resposta){
+                    mudou = true;
+                    return { ...m, resposta: encontrada.resposta, dataResposta: encontrada.dataResposta };
+                }
+                return m;
+            });
+
+            if(mudou){
+                await window.storage.set(CHAVE_SUGESTOES_LOCAL, JSON.stringify(minhas), false);
+                renderizarChatSugestoes(minhas);
+            }
+        }
+    } catch(e) {
+        console.error('Não foi possível verificar novas respostas:', e);
+    }
+}
+
+// Gera um id simples pra identificar cada sugestão (usado quando não tem Firebase)
+function gerarIdSugestao(){
+    return 's_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+}
+
+// Busca a lista completa de sugestões da fonte compartilhada (Firebase, ou o storage compartilhado como fallback)
+async function buscarSugestoesDaFonte(){
+    await firebasePronto;
+    if(dbFirebase){
+        const snapshot = await dbFirebase.ref('sugestoes').get();
+        const dados = snapshot.exists() ? snapshot.val() : {};
+        return Object.values(dados);
+    }
+    const chave = 'sugestoes:log';
+    const atual = await window.storage.get(chave, true);
+    return (atual && atual.value) ? JSON.parse(atual.value) : [];
+}
+
+// Roda em segundo plano (a cada 1 min) pra avisar o aluno com uma bolinha vermelha no 💬
+// caso o professor tenha respondido alguma sugestão pendente.
+let intervaloVerificacaoRespostas = null;
+
+async function verificarNovaRespostaSugestao(){
     try {
         const atual = await window.storage.get(CHAVE_SUGESTOES_LOCAL, false);
         const minhas = (atual && atual.value) ? JSON.parse(atual.value) : [];
-        renderizarChatSugestoes(minhas);
-    } catch(e) {
-        renderizarChatSugestoes([]);
-    }
+        const pendentes = minhas.filter(m => !m.resposta);
+        if(pendentes.length === 0) return;
+
+        const atualizadas = await buscarSugestoesDaFonte();
+        const porId = {};
+        atualizadas.forEach(r => { if(r && r.id) porId[r.id] = r; });
+
+        const temNova = pendentes.some(m => m.id && porId[m.id] && porId[m.id].resposta);
+        const btn = document.getElementById('sugestaoBtn');
+        if(btn) btn.classList.toggle('tem-resposta-nova', temNova);
+    } catch(e) { /* verificação silenciosa, não trava o app */ }
+}
+
+function limparAvisoRespostaSugestao(){
+    document.getElementById('sugestaoBtn')?.classList.remove('tem-resposta-nova');
 }
 
 function renderizarChatSugestoes(minhas){
@@ -5920,7 +6112,17 @@ function renderizarChatSugestoes(minhas){
     lista.innerHTML = minhas.map(m => {
         const data = new Date(m.data);
         const dataFormatada = data.toLocaleDateString('pt-BR') + ' às ' + data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        return `<div class="chat-bolha chat-bolha-eu"><span>${escapeHtmlSugestao(m.mensagem)}</span><small>${dataFormatada}</small></div>`;
+        const bolhaAluno = `<div class="chat-bolha chat-bolha-eu"><span>${escapeHtmlSugestao(m.mensagem)}</span><small>${dataFormatada}</small></div>`;
+
+        if(!m.resposta) return bolhaAluno;
+
+        const dataResp = m.dataResposta ? new Date(m.dataResposta) : null;
+        const dataRespFormatada = dataResp
+            ? (dataResp.toLocaleDateString('pt-BR') + ' às ' + dataResp.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }))
+            : '';
+        const bolhaProf = `<div class="chat-bolha chat-bolha-prof"><span class="rotulo-prof">👨‍🏫 Professor respondeu</span><span>${escapeHtmlSugestao(m.resposta)}</span>${dataRespFormatada ? `<small>${dataRespFormatada}</small>` : ''}</div>`;
+
+        return bolhaAluno + bolhaProf;
     }).join('');
 
     lista.scrollTop = lista.scrollHeight;
@@ -5932,7 +6134,7 @@ async function enviarSugestao(){
     if(!texto) return;
 
     const nome = nomeContaAtual || 'Aluno';
-    const registro = { nome, mensagem: texto, data: new Date().toISOString() };
+    const registro = { id: gerarIdSugestao(), nome, mensagem: texto, data: new Date().toISOString(), resposta: null, dataResposta: null };
 
     input.value = '';
     input.disabled = true;
@@ -5940,7 +6142,11 @@ async function enviarSugestao(){
     await firebasePronto; // espera o SDK carregar (só faz algo fora do Claude, com Firebase configurado)
     if(dbFirebase){
         try {
-            await dbFirebase.ref('sugestoes').push(registro);
+            // Cria a referência primeiro pra usar a MESMA chave do Firebase como id
+            // (assim o professor consegue responder direto nesse registro).
+            const refNovo = dbFirebase.ref('sugestoes').push();
+            registro.id = refNovo.key;
+            await refNovo.set(registro);
         } catch(e) {
             console.error('Firebase: não foi possível enviar a sugestão, salvando só neste dispositivo:', e);
         }
@@ -5995,23 +6201,16 @@ async function abrirPainelSugestoes(){
     }
 
     const modal = document.getElementById('painelSugestoesModal');
-    const lista = document.getElementById('listaSugestoesProfessor');
     modal.style.display = 'flex';
+    await carregarListaSugestoesProfessor();
+}
+
+async function carregarListaSugestoesProfessor(){
+    const lista = document.getElementById('listaSugestoesProfessor');
     lista.textContent = 'Carregando...';
 
     try {
-        await firebasePronto;
-        let registros = [];
-
-        if(dbFirebase){
-            const snapshot = await dbFirebase.ref('sugestoes').get();
-            const dados = snapshot.exists() ? snapshot.val() : {};
-            registros = Object.values(dados);
-        } else {
-            const chave = 'sugestoes:log';
-            const atual = await window.storage.get(chave, true);
-            registros = (atual && atual.value) ? JSON.parse(atual.value) : [];
-        }
+        const registros = await buscarSugestoesDaFonte();
 
         if(registros.length === 0){
             lista.innerHTML = '<div class="lista-contas-vazio">Nenhuma sugestão recebida ainda.</div>';
@@ -6030,13 +6229,75 @@ async function abrirPainelSugestoes(){
         lista.innerHTML = avisoLimite + exibidos.map(r => {
             const data = new Date(r.data);
             const dataFormatada = data.toLocaleDateString('pt-BR') + ' às ' + data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            return `<div class="lista-contas-item sugestao-item">
+            const id = r.id || '';
+
+            let blocoResposta;
+            if(r.resposta){
+                blocoResposta = `<div class="sugestao-resposta-existente"><b>👨‍🏫 Sua resposta:</b> ${escapeHtmlSugestao(r.resposta)}</div>
+                    <button type="button" class="btn-responder-sugestao" data-id="${id}" data-acao="editar">✏️ Editar resposta</button>`;
+            } else {
+                blocoResposta = `<button type="button" class="btn-responder-sugestao" data-id="${id}" data-acao="abrir">↩️ Responder</button>`;
+            }
+
+            return `<div class="lista-contas-item sugestao-item" data-item-id="${id}">
                 <span><b>👤 ${escapeHtmlSugestao(r.nome)}</b> · ${dataFormatada}</span>
                 <span>${escapeHtmlSugestao(r.mensagem)}</span>
+                <div class="sugestao-bloco-resposta" data-bloco-id="${id}">${id ? blocoResposta : ''}</div>
             </div>`;
         }).join('');
     } catch(e) {
         lista.innerHTML = '<div class="lista-contas-vazio">Não foi possível carregar as sugestões.</div>';
+    }
+}
+
+// Delegação de clique: abrir o campo de resposta, editar uma já existente, ou enviar a resposta
+document.getElementById('listaSugestoesProfessor')?.addEventListener('click', function(e){
+    const btnResponder = e.target.closest('.btn-responder-sugestao');
+    if(btnResponder){
+        abrirFormularioRespostaSugestao(btnResponder.dataset.id);
+        return;
+    }
+    const btnEnviar = e.target.closest('.btn-enviar-resposta-sugestao');
+    if(btnEnviar){
+        enviarRespostaSugestao(btnEnviar.dataset.id);
+        return;
+    }
+});
+
+function abrirFormularioRespostaSugestao(id){
+    const bloco = document.querySelector(`.sugestao-bloco-resposta[data-bloco-id="${id}"]`);
+    if(!bloco) return;
+    bloco.innerHTML = `<div class="sugestao-resposta-form">
+        <textarea rows="2" placeholder="Escreva sua resposta..." maxlength="500" id="resp-input-${id}"></textarea>
+        <button type="button" class="btn-enviar-resposta-sugestao" data-id="${id}">Enviar</button>
+    </div>`;
+    document.getElementById(`resp-input-${id}`)?.focus();
+}
+
+async function enviarRespostaSugestao(id){
+    const input = document.getElementById(`resp-input-${id}`);
+    const texto = (input?.value || '').trim();
+    if(!texto || !id) return;
+
+    input.disabled = true;
+    const dataResposta = new Date().toISOString();
+
+    try {
+        await firebasePronto;
+        if(dbFirebase){
+            await dbFirebase.ref('sugestoes/' + id).update({ resposta: texto, dataResposta });
+        } else {
+            const chave = 'sugestoes:log';
+            const atual = await window.storage.get(chave, true);
+            let listaGeral = (atual && atual.value) ? JSON.parse(atual.value) : [];
+            listaGeral = listaGeral.map(r => r.id === id ? { ...r, resposta: texto, dataResposta } : r);
+            await window.storage.set(chave, JSON.stringify(listaGeral), true);
+        }
+        await carregarListaSugestoesProfessor();
+    } catch(e) {
+        console.error('Não foi possível enviar a resposta:', e);
+        alert('Não foi possível enviar a resposta. Tente novamente.');
+        if(input) input.disabled = false;
     }
 }
 
