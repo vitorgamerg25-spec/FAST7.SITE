@@ -1700,6 +1700,31 @@ body.dark .chat-sugestoes-input textarea{
     white-space:nowrap;
 }
 
+.btn-enviar-sugestao{
+    white-space:nowrap;
+    border:none;
+    border-radius:12px;
+    padding:10px 20px;
+    background:linear-gradient(135deg, var(--brand), var(--brand-light));
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(var(--brand-rgb),0.35);
+    transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn-enviar-sugestao:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(var(--brand-rgb),0.45);
+    filter:brightness(1.05);
+}
+
+.btn-enviar-sugestao:active{
+    transform:translateY(0);
+    box-shadow:0 4px 10px rgba(var(--brand-rgb),0.35);
+}
+
 .sugestao-item{
     display:flex;
     flex-direction:column;
@@ -3965,7 +3990,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <div class="chat-sugestoes-lista" id="chatSugestoesLista">Carregando...</div>
         <div class="chat-sugestoes-input">
             <textarea id="inputSugestao" placeholder="Escreva sua sugestão..." maxlength="500" rows="2"></textarea>
-            <button class="btn-secundario" onclick="enviarSugestao()">Enviar →</button>
+            <button class="btn-enviar-sugestao" onclick="enviarSugestao()">Enviar →</button>
         </div>
     </div>
 </div>
