@@ -2262,10 +2262,10 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <p id="saudacaoAluno">Escolha uma matéria e comece agora ou pergunte para a Study IA</p>
 </div>
 
-<!-- AVISO: hoje é dia de prova de Matemática -->
-<div class="aviso-prova-dia" id="avisoProvaDia">
-    <div class="aviso-texto"><span class="aviso-icone">📐</span> Hoje é dia de prova de Matemática! Aproveita pra revisar antes de ir.</div>
-    <button onclick="irParaMateria('matematica')">Estudar Matemática →</button>
+<!-- AVISO: atualizado automaticamente pelo JS (função atualizarAvisoProvaDia), com base no cronograma real de provas -->
+<div class="aviso-prova-dia" id="avisoProvaDia" style="display:none;">
+    <div class="aviso-texto"><span class="aviso-icone">📐</span> Hoje é dia de prova!</div>
+    <button onclick="irParaMateria('matematica')">Estudar →</button>
 </div>
 
 <!-- ATALHOS RAPIDOS -->
@@ -4112,6 +4112,85 @@ function modo(){
 }
 
 // Rolar suavemente até o card ou painel de tópicos da matéria selecionada
+// ===== AVISO DE PROVA DO DIA (dinâmico, baseado no Cronograma de Provas — 2º Bimestre) =====
+// Chave no formato AAAA-MM-DD (ano-mês-dia), seguindo a data local do aparelho do aluno.
+const CRONOGRAMA_PROVAS = {
+    '2026-07-08': [ { nome:'Matemática',       id:'matematica', icone:'📐' } ],
+    '2026-07-09': [ { nome:'Português',        id:'portugues',  icone:'📖' } ],
+    '2026-07-10': [ { nome:'Artes',            id:'artes',      icone:'🎨' },
+                     { nome:'Produção Textual', id:'portugues',  icone:'✍️' } ],
+    '2026-07-13': [ { nome:'Geografia',        id:'geografia',  icone:'🌎' },
+                     { nome:'Ciências',         id:'ciencias',   icone:'🧪' } ],
+    '2026-07-14': [ { nome:'História',         id:'historia',   icone:'🏛️' },
+                     { nome:'Inglês',           id:'ingles',     icone:'🇬🇧' } ]
+};
+
+// Junta uma lista de nomes em texto natural: "A", "A e B", "A, B e C"
+function juntarComE(nomes){
+    if(nomes.length === 1) return nomes[0];
+    return nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1];
+}
+
+// A partir das 18:00, o aviso já passa a mostrar a prova do dia SEGUINTE (pra dar tempo de estudar à noite).
+// Antes das 18:00, mostra a prova do próprio dia.
+function obterDataReferenciaAviso(agora){
+    const dataRef = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+    if(agora.getHours() >= 18){
+        dataRef.setDate(dataRef.getDate() + 1);
+    }
+    return dataRef;
+}
+
+function atualizarAvisoProvaDia(){
+    const aviso = document.getElementById('avisoProvaDia');
+    if(!aviso) return;
+
+    const agora = new Date();
+    const dataRef = obterDataReferenciaAviso(agora);
+    const chave = dataRef.getFullYear() + '-' + String(dataRef.getMonth() + 1).padStart(2, '0') + '-' + String(dataRef.getDate()).padStart(2, '0');
+    const ehAmanha = agora.getHours() >= 18;
+    const provasHoje = CRONOGRAMA_PROVAS[chave];
+
+    if(!provasHoje || provasHoje.length === 0){
+        aviso.style.display = 'none';
+        return;
+    }
+
+    const nomes = provasHoje.map(p => p.nome);
+    const nomesTexto = juntarComE(nomes);
+    const icone = provasHoje[0].icone;
+    const idAlvo = provasHoje[0].id;
+
+    aviso.querySelector('.aviso-texto').innerHTML = `<span class="aviso-icone">${icone}</span> ${ehAmanha ? 'Amanhã' : 'Hoje'} é dia de prova de ${nomesTexto}! Aproveita pra revisar ${ehAmanha ? 'hoje à noite' : 'antes de ir'}.`;
+
+    const botao = aviso.querySelector('button');
+    if(botao){
+        botao.textContent = `Estudar ${nomesTexto} →`;
+        botao.onclick = () => irParaMateria(idAlvo);
+    }
+
+    aviso.style.display = 'flex';
+}
+
+// Calcula o próximo horário de virada: toda meia-noite (00:00) E toda 18:00.
+function proximoHorarioAtualizacaoAviso(agora){
+    const hoje18h = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 18, 0, 5);
+    const amanha0h = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate() + 1, 0, 0, 5);
+    return agora < hoje18h ? hoje18h : amanha0h;
+}
+
+// Agenda a próxima virada (18:00 ou 00:00) pra atualizar o aviso sozinho, sem precisar recarregar a página.
+function agendarAtualizacaoAvisoProva(){
+    const agora = new Date();
+    const proximo = proximoHorarioAtualizacaoAviso(agora);
+    const ms = proximo - agora;
+
+    setTimeout(() => {
+        atualizarAvisoProvaDia();
+        agendarAtualizacaoAvisoProva();
+    }, ms);
+}
+
 function irParaMateria(idMateria) {
     const elemento = document.getElementById(`card-${idMateria}`);
     if(elemento) {
@@ -5146,6 +5225,15 @@ function aplicarIlustracoesCards(mapaIconesPorMateria){
 }
 
 // IA
+// ===== STUDY IA REAL (via proxy seguro) =====
+// Depois de configurar o Worker (veja study-ia-worker.js), cole aqui a URL que a Cloudflare te deu.
+// Enquanto estiver com o valor de exemplo abaixo, ou se o proxy cair, a Study IA usa
+// automaticamente o modo antigo (respostas prontas) como fallback, sem quebrar o site.
+const STUDY_IA_PROXY_URL = "https://study-ia-proxy.vitorgamerg25.workers.dev";
+
+// Guarda o histórico da conversa (só perguntas e respostas de texto) pra dar contexto à IA real.
+let historicoConversaIA = [];
+
 const respostas = {
     verbo: "📖 Verbo é a palavra que indica ação, estado ou fenômeno da natureza. Ex: correr, ser, chover.",
     "verbo de ligação": "📖 Verbo de ligação liga o sujeito a uma característica, estado ou qualidade (ex: ser, estar, ficar, parecer). Ex: 'A menina está feliz.'",
@@ -5334,7 +5422,65 @@ function normalizarTexto(texto){
         .trim();
 }
 
-function perguntarIA(perguntaOriginal){
+// Escapa HTML pra exibir com segurança texto vindo da IA (evita injeção de código na página)
+// e transforma quebras de linha em <br>, já que a resposta da IA é texto puro.
+function formatarRespostaIA(texto){
+    const div = document.createElement('div');
+    div.textContent = texto;
+    return div.innerHTML.replace(/\n/g, '<br>');
+}
+
+// Tenta responder com a IA real (via proxy). Retorna o texto da resposta, ou lança erro se falhar
+// (proxy não configurado, sem internet, erro da API etc.) — quem chama decide o fallback.
+async function perguntarIAReal(pergunta){
+    if(!STUDY_IA_PROXY_URL || STUDY_IA_PROXY_URL.includes('SEU-USUARIO')){
+        throw new Error('Proxy da Study IA ainda não configurado.');
+    }
+
+    historicoConversaIA.push({ role: 'user', content: pergunta });
+    historicoConversaIA = historicoConversaIA.slice(-20); // mantém só os últimos 10 pares de mensagens
+
+    const resposta = await fetch(STUDY_IA_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: historicoConversaIA })
+    });
+
+    if(!resposta.ok) throw new Error('Proxy respondeu com erro: ' + resposta.status);
+
+    const dados = await resposta.json();
+    if(!dados.reply) throw new Error('Resposta vazia da IA.');
+
+    historicoConversaIA.push({ role: 'assistant', content: dados.reply });
+    historicoConversaIA = historicoConversaIA.slice(-20);
+
+    return dados.reply;
+}
+
+// Fallback: o sistema antigo de respostas prontas (palavras-chave), usado quando a IA real
+// não está disponível — assim a Study IA nunca fica muda, mesmo sem o proxy configurado.
+function respostaFallback(perguntaNormalizada){
+    const encontrada = encontrarResposta(perguntaNormalizada);
+    if(encontrada){
+        let prefixo = '';
+        if(encontrada.tipo === 'aproximada'){
+            prefixo = `<div class="ai-msg-aproximada">Você quis dizer <b>${encontrada.chave}</b>? 🤔</div>`;
+        }
+        return prefixo + encontrada.resposta;
+    }
+    const sugestoes = sugerirTopicos(perguntaNormalizada, 4);
+    let html = "🤖 Ainda não sei responder isso com certeza.";
+    if(sugestoes.length > 0){
+        html += " Talvez você queira perguntar sobre:<div class=\"ai-sugestoes\">" +
+            sugestoes.map(chave => `<button type="button" class="ai-chip ai-chip-sugestao" data-pergunta="${chave.replace(/"/g, '&quot;')}">${chave}</button>`).join('') +
+            "</div>";
+    } else {
+        html += " Tente termos como: verbo, sujeito, volume, produtor, Lutero, densidade demográfica... ou toque numa sugestão acima!";
+    }
+    return html;
+}
+
+async function perguntarIA(perguntaOriginal){
     const pergunta = perguntaOriginal.trim();
     if(!pergunta) return;
 
@@ -5352,33 +5498,19 @@ function perguntarIA(perguntaOriginal){
 
     chat.scrollTop = chat.scrollHeight;
 
-    setTimeout(() => {
-        const perguntaNormalizada = normalizarTexto(pergunta);
-        const encontrada = encontrarResposta(perguntaNormalizada);
-
+    try {
+        const respostaTexto = await perguntarIAReal(pergunta);
         bolhaBot.classList.remove("digitando");
+        bolhaBot.innerHTML = formatarRespostaIA(respostaTexto);
+    } catch(erro) {
+        // IA real indisponível — usa o modo antigo de respostas prontas, sem travar o chat.
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const perguntaNormalizada = normalizarTexto(pergunta);
+        bolhaBot.classList.remove("digitando");
+        bolhaBot.innerHTML = respostaFallback(perguntaNormalizada);
+    }
 
-        if(encontrada){
-            let prefixo = '';
-            if(encontrada.tipo === 'aproximada'){
-                prefixo = `<div class="ai-msg-aproximada">Você quis dizer <b>${encontrada.chave}</b>? 🤔</div>`;
-            }
-            bolhaBot.innerHTML = prefixo + encontrada.resposta;
-        } else {
-            const sugestoes = sugerirTopicos(perguntaNormalizada, 4);
-            let html = "🤖 Ainda não sei responder isso com certeza.";
-            if(sugestoes.length > 0){
-                html += " Talvez você queira perguntar sobre:<div class=\"ai-sugestoes\">" +
-                    sugestoes.map(chave => `<button type="button" class="ai-chip ai-chip-sugestao" data-pergunta="${chave.replace(/"/g, '&quot;')}">${chave}</button>`).join('') +
-                    "</div>";
-            } else {
-                html += " Tente termos como: verbo, sujeito, volume, produtor, Lutero, densidade demográfica... ou toque numa sugestão acima!";
-            }
-            bolhaBot.innerHTML = html;
-        }
-
-        chat.scrollTop = chat.scrollHeight;
-    }, 450);
+    chat.scrollTop = chat.scrollHeight;
 }
 
 // Delegação de clique pros chips de sugestão que são criados dinamicamente dentro do chat
@@ -5941,6 +6073,8 @@ function notificarVisita(){
 
 window.addEventListener("load", function(){
     notificarVisita();
+    atualizarAvisoProvaDia();
+    agendarAtualizacaoAvisoProva();
     iniciarConta();
     ['provao','portugues','matematica','ciencias','historia','geografia','ingles','artes'].forEach(embaralharProva);
     inicializarMarcacaoQuestoes();
