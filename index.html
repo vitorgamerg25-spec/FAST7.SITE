@@ -588,23 +588,24 @@ body.dark .provas-container > p.sub{
 /* CARDS ATALHOS */
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-    gap:16px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
     padding:0 15px;
 }
 
 .card{
-    padding:22px 16px;
-    border-radius:18px;
+    padding:20px 10px;
+    border-radius:14px;
     text-align:center;
     cursor:pointer;
     background:rgba(255,255,255,0.45);
     backdrop-filter:blur(32px) saturate(160%);
     -webkit-backdrop-filter:blur(32px) saturate(160%);
     border:1px solid rgba(255,255,255,0.4);
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    box-shadow:0 6px 16px rgba(0,0,0,0.08);
     transition:.3s;
-    font-size:1.1em;
+    font-size:1.02em;
+    line-height:1.25;
     position:relative;
     overflow:hidden;
 }
@@ -1879,6 +1880,7 @@ body.dark .badge-retorno{
 
 /* ==================== PROVAS ==================== */
 .provas{border-top:4px solid #ef4444;}
+.provas2{border-top:4px solid #3b82f6;}
 
 .provas-container{
     margin: 40px 15px;
@@ -2459,6 +2461,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
 <div class="hero">
     <h1>Portal de Estudos STUDY7</h1>
     <p id="saudacaoAluno">Escolha uma matéria e comece agora ou pergunte para a Study IA</p>
+    <p style="opacity:.75; font-size:12px; margin-top:4px;">Desenvolvido pela equipe Study7: Vitor Oliveira e Dylan Siqueira</p>
 </div>
 
 <!-- AVISO: atualizado automaticamente pelo JS (função atualizarAvisoProvaDia), com base no cronograma real de provas -->
@@ -2470,7 +2473,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
 <!-- ATALHOS RAPIDOS -->
 <div class="cards">
     <div class="card ia" onclick="irParaIA()">🤖 Study IA</div>
-    <div class="card materias-prova" onclick="irParaMateriasProva()">📚 Matérias de Prova</div>
+    <div class="card materias-prova" id="cardMateriasProva" onclick="irParaMateriasProva()">📚 Matérias de Prova</div>
     <div class="card portugues" onclick="irParaMateria('portugues')">📖 Português</div>
     <div class="card matematica" onclick="irParaMateria('matematica')">➗ Matemática</div>
     <div class="card ciencias" onclick="irParaMateria('ciencias')">🧪 Ciências</div>
@@ -2480,7 +2483,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <div class="card artes" onclick="irParaMateria('artes')">🎨 Artes</div>
     <div class="card producaotextual" onclick="irParaMateria('producaotextual')">✍️ Produção Textual</div>
     <div class="card provas" onclick="irParaProvas()">🧾 Provas</div>
-    <div class="card ano-todo" onclick="irParaAnoTodo()">🗓️ Matérias do Ano Todo</div>
+    <div class="card provas2" onclick="irParaProvas2()">🧾 Provas 2</div>
     <div class="card cronograma" onclick="irParaCronograma()">📅 Cronograma de Provas</div>
 </div>
 
@@ -2827,6 +2830,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
 
     <div class="provas-menu">
         <button class="provas-menu-btn" data-materia="provao" style="background:linear-gradient(135deg,#f59e0b,#ef4444);" onclick="irParaProva('provao')">🏆 Provão Geral<span>Todas as matérias</span></button>
+        <button class="provas-menu-btn" style="background:linear-gradient(135deg,#3b82f6,#0ea5e9);" onclick="irParaProvas2()">🧾 Provas 2<span>Ir para a aba</span></button>
         <button class="provas-menu-btn" data-materia="portugues" onclick="irParaProva('portugues')">📖 Português<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="matematica" onclick="irParaProva('matematica')">➗ Matemática<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="geografia" onclick="irParaProva('geografia')">🌎 Geografia<span>Fazer Prova</span></button>
@@ -2835,13 +2839,6 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <button class="provas-menu-btn" data-materia="ingles" onclick="irParaProva('ingles')">🇬🇧 Inglês<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="artes" onclick="irParaProva('artes')">🎨 Artes<span>Fazer Prova</span></button>
         <button class="provas-menu-btn" data-materia="producaotextual" onclick="irParaProva('producaotextual')">✍️ Produção Textual<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="portugues2" onclick="irParaProva('portugues2')">📖 Português 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="matematica2" onclick="irParaProva('matematica2')">➗ Matemática 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="geografia2" onclick="irParaProva('geografia2')">🌎 Geografia 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="ciencias2" onclick="irParaProva('ciencias2')">🧪 Ciências 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="historia2" onclick="irParaProva('historia2')">🏛️ História 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="ingles2" onclick="irParaProva('ingles2')">🇬🇧 Inglês 2<span>Fazer Prova</span></button>
-        <button class="provas-menu-btn" data-materia="artes2" onclick="irParaProva('artes2')">🎨 Artes 2<span>Fazer Prova</span></button>
     </div>
 
     <div class="provas-list">
@@ -4091,6 +4088,29 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
             </form>
         </div>
 
+    
+
+    </div>
+</div>
+
+<!-- 🧾 PROVAS 2 (nova seção, alternável com a Provas 1) -->
+<div class="provas-container" id="secao-provas2" style="display:none;">
+    <h2>🧾 Provas 2</h2>
+    <p class="sub">A segunda leva de provas de cada matéria</p>
+
+    <div class="provas-menu">
+        <button class="provas-menu-btn" style="background:linear-gradient(135deg,#ef4444,#f59e0b);" onclick="irParaProvas()">🧾 Provas 1<span>Ir para a aba</span></button>
+        <button class="provas-menu-btn" data-materia="portugues2" onclick="irParaProva('portugues2')">📖 Português 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="matematica2" onclick="irParaProva('matematica2')">➗ Matemática 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="geografia2" onclick="irParaProva('geografia2')">🌎 Geografia 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="ciencias2" onclick="irParaProva('ciencias2')">🧪 Ciências 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="historia2" onclick="irParaProva('historia2')">🏛️ História 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="ingles2" onclick="irParaProva('ingles2')">🇬🇧 Inglês 2<span>Fazer Prova</span></button>
+        <button class="provas-menu-btn" data-materia="artes2" onclick="irParaProva('artes2')">🎨 Artes 2<span>Fazer Prova</span></button>
+    </div>
+
+    <div class="provas-list">
+
         <!-- PORTUGUÊS 2 -->
         <div class="prova-panel" id="painel-prova-portugues2">
             <h3>📖 Português 2</h3>
@@ -4650,9 +4670,6 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
                 <div class="prova-resultado" id="resultado-historia2"></div>
             </form>
         </div>
-
-    
-
     </div>
 </div>
 
@@ -4999,6 +5016,30 @@ function atualizarAvisoProvaDia(){
     if(!aviso) return;
 
     const agora = new Date();
+
+    // Início das férias: 14/07 às 15h (terça, fim das provas) até o fim do dia 27/07.
+    // Nesse período mostra "Férias 🎉" e esconde o card "Matérias de Prova".
+    const inicioFerias = new Date(2026, 6, 14, 15, 0, 0); // mês 6 = julho (0-indexado)
+    const fimFerias = new Date(2026, 6, 27, 23, 59, 59);
+    const emFerias = agora >= inicioFerias && agora <= fimFerias;
+    const cardMateriasProva = document.getElementById('cardMateriasProva');
+
+    if(emFerias){
+        aviso.querySelector('.aviso-texto').innerHTML = `<span class="aviso-icone">🎉</span> Férias 🎉`;
+
+        const botao = aviso.querySelector('button');
+        if(botao){
+            botao.style.display = 'none';
+        }
+
+        aviso.style.display = 'flex';
+
+        if(cardMateriasProva) cardMateriasProva.style.display = 'none';
+        return;
+    }
+
+    if(cardMateriasProva) cardMateriasProva.style.display = '';
+
     const dataRef = obterDataReferenciaAviso(agora);
     const chave = dataRef.getFullYear() + '-' + String(dataRef.getMonth() + 1).padStart(2, '0') + '-' + String(dataRef.getDate()).padStart(2, '0');
     const ehAmanha = agora.getHours() >= 15;
@@ -5018,6 +5059,7 @@ function atualizarAvisoProvaDia(){
 
     const botao = aviso.querySelector('button');
     if(botao){
+        botao.style.display = '';
         botao.textContent = `Estudar ${nomesTexto} →`;
         botao.onclick = () => irParaMateria(idAlvo);
     }
@@ -5053,10 +5095,26 @@ function irParaMateria(idMateria) {
     }
 }
 
-// Rolar suavemente até a seção de provas
+// Rolar suavemente até a seção de provas (fecha a Provas 2, se estiver aberta)
 function irParaProvas() {
+    const provas2 = document.getElementById('secao-provas2');
+    if(provas2) provas2.style.display = 'none';
+
     const elemento = document.getElementById('secao-provas');
     if(elemento) {
+        elemento.style.display = '';
+        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Rolar suavemente até a seção de Provas 2 (fecha a Provas 1)
+function irParaProvas2() {
+    const provas1 = document.getElementById('secao-provas');
+    if(provas1) provas1.style.display = 'none';
+
+    const elemento = document.getElementById('secao-provas2');
+    if(elemento) {
+        elemento.style.display = '';
         elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
@@ -5109,9 +5167,25 @@ function irParaProva(idMateria) {
 
     const painel = document.getElementById(`painel-prova-${idMateria}`);
     const secaoProvas = document.getElementById('secao-provas');
+    const secaoProvas2 = document.getElementById('secao-provas2');
 
-    if(secaoProvas){
-        secaoProvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Descobre em qual seção (Provas 1 ou Provas 2) o painel está e abre a seção correta,
+    // fechando a outra
+    let secaoAlvo = secaoProvas;
+    if(painel && secaoProvas2 && secaoProvas2.contains(painel)) {
+        secaoAlvo = secaoProvas2;
+    }
+
+    if(secaoAlvo === secaoProvas2) {
+        if(secaoProvas) secaoProvas.style.display = 'none';
+        if(secaoProvas2) secaoProvas2.style.display = '';
+    } else {
+        if(secaoProvas2) secaoProvas2.style.display = 'none';
+        if(secaoProvas) secaoProvas.style.display = '';
+    }
+
+    if(secaoAlvo){
+        secaoAlvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     if(painel) {
@@ -5790,19 +5864,62 @@ const exerciciosEscritos = {
         <p style="opacity:.7; font-size:0.85em;">💡 Gabarito (Parte 3): 1) She was a Mexican painter; 2) She was an activist (American civil rights activist); 3) She was an Indian politician; 4) She was born in Brazil; 5) She was born in 1907; 6) She died in 2005; 7) She was the only female minister of India; 8) She was a brave fighter in the war for Brazilian independence; 9) She died in 1928; 10) She died in 1954.</p>
     `,
     'Artes': `
-        <h4>✍️ Exercícios — Artes</h4>
-        <p>Tente resolver e depois confira no fim:</p>
+        <h4>✍️ Exercícios — Artes (Revisão: Barroco e Arte Indígena)</h4>
+        <p style="font-weight:700; margin-top:10px;">Verdadeiro ou Falso</p>
         <ul>
-            <li>1) Cite dois exemplos de arte indígena brasileira.</li>
-            <li>2) De onde vem o nome da cerâmica marajoara?</li>
-            <li>3) Por qual instituição o Barroco chegou ao Brasil Colonial?</li>
-            <li>4) Cite uma característica visual marcante da arte barroca.</li>
-            <li>5) Quem foi Aleijadinho e por que ele é importante?</li>
-            <li>6) Como eram decoradas as igrejas barrocas no Brasil Colonial?</li>
-            <li>7) Explique a ligação entre a arte indígena e a natureza/rituais.</li>
-            <li>8) Por que dizemos que a arte no Brasil Colonial é um "encontro de culturas"?</li>
+            <li>1) O barroco brasileiro buscava principalmente a razão, a simetria e o equilíbrio, características do renascimento.</li>
+            <li>2) As igrejas barrocas mineiras apresentam decoração rica, uso de douramento, movimento e muitos detalhes ornamentais.</li>
+            <li>3) Aleijadinho utilizou a pedra-sabão em diversas de suas esculturas.</li>
+            <li>4) A arte barroca no Brasil foi influenciada pela cultura europeia, mas também incorporou características locais.</li>
+            <li>5) O barroco valoriza a simplicidade extrema e evita contrastes visuais.</li>
+            <li>6) O claro-escuro é uma técnica muito utilizada na pintura barroca.</li>
+            <li>7) As esculturas barrocas apresentam movimento e expressividade.</li>
+            <li>8) O ouro foi amplamente utilizado na decoração das igrejas barrocas brasileiras.</li>
+            <li>9) Aleijadinho foi um importante artista do período colonial brasileiro.</li>
+            <li>10) As obras de Aleijadinho buscaram copiar perfeitamente os modelos clássicos europeus.</li>
+            <li>11) Os indígenas brasileiros produzem objetos que possuem valor artístico, simbólico e espiritual.</li>
+            <li>12) As penas e plumas usadas em colares, braçadeiras e cocares fazem parte da arte chamada plumária.</li>
+            <li>13) A tinta usada para pintar utiliza padrões gráficos inspirados em elementos da natureza, como peixes.</li>
+            <li>14) As bonecas Karajá são tradicionalmente confeccionadas com argila.</li>
+            <li>15) Depois de moldada, a argila torna-se mais resistente e impermeável.</li>
+            <li>16) Entre os Kayapó, as mulheres têm papel importante na realização das pinturas corporais.</li>
+            <li>17) Os grafismos indígenas são apenas decorativos e não possuem significados culturais.</li>
+            <li>18) Os símbolos indígenas representam valores e ensinamentos importantes das culturas.</li>
+            <li>19) O símbolo/pintura do Xingu está relacionado à sabedoria, inteligência, agilidade e paciência.</li>
+            <li>20) O barroco foi um movimento artístico marcado pela dramaticidade, emoção e contrastes.</li>
+            <li>21) O barroco buscava emocionar as pessoas por meio da arte.</li>
+            <li>22) A douração era muito utilizada nas igrejas barrocas.</li>
+            <li>23) As esculturas barrocas não apresentam movimento.</li>
+            <li>24) Aleijadinho nasceu em Minas Gerais.</li>
+            <li>25) Os adornos indígenas podem ter significados culturais e espirituais.</li>
+            <li>26) O cocar é um adorno produzido com penas.</li>
+            <li>27) Os símbolos indígenas transmitem ensinamentos e valores.</li>
+            <li>28) As reservas indígenas servem apenas para exploração de recursos naturais.</li>
+            <li>29) O barroco é um movimento artístico marcado pelas emoções, pelo movimento e pela dramaticidade.</li>
+            <li>30) A técnica do claro-escuro é muito utilizada na pintura barroca.</li>
+            <li>31) As igrejas barrocas apresentam poucos detalhes decorativos.</li>
+            <li>32) Aleijadinho foi um dos principais artistas do barroco brasileiro.</li>
+            <li>33) As esculturas barrocas geralmente expressam sentimentos e emoções intensas.</li>
+            <li>34) A pedra-sabão foi um material utilizado por Aleijadinho em suas esculturas.</li>
+            <li>35) A arte plumária utiliza penas e plumas para criar adornos.</li>
+            <li>36) Os cocares indígenas são usados apenas para decorar cabeças.</li>
+            <li>37) As bonecas Karajá são produzidas com argila.</li>
+            <li>38) As reservas indígenas têm a função de preservar a cultura e o direito dos povos indígenas.</li>
         </ul>
-        <p style="opacity:.7; font-size:0.85em;">💡 Gabarito: 1) cerâmica, cestaria, grafismos corporais, arte plumária (citar dois); 2) da Ilha de Marajó, no Pará; 3) da Igreja Católica; 4) forte contraste entre luz e sombra (ou movimento/dramaticidade); 5) escultor e arquiteto do Barroco brasileiro, autor dos Profetas de Congonhas; 6) com ouro, talha e ornamentos ricos; 7) ela está ligada a rituais e à relação dos povos indígenas com a natureza; 8) porque mistura elementos europeus, indígenas e depois africanos.</p>
+        <p style="font-weight:700; margin-top:14px;">Complete as frases</p>
+        <ul>
+            <li>39) O principal artista do barroco brasileiro foi ____.</li>
+            <li>40) As esculturas dos profetas foram feitas em ____ (em Congonhas).</li>
+            <li>41) A técnica que utiliza contraste entre luz e sombra chama-se ____.</li>
+            <li>42) O estilo artístico marcado por emoção, movimento e riqueza de detalhes é o ____.</li>
+            <li>43) A arte feita com apenas penas e plumas recebe o nome de ____.</li>
+            <li>44) Os povos indígenas utilizam ____, cores e maquiagem em festas e rituais.</li>
+            <li>45) As bonecas Karajá são feitas de ____.</li>
+            <li>46) O povo ____ vive entre o Amapá e a Guiana Francesa.</li>
+            <li>47) As reservas indígenas ajudam a preservar a ____ e os costumes dos povos indígenas.</li>
+        </ul>
+        <p style="opacity:.7; font-size:0.85em;">💡 Gabarito (V/F): 1-F, 2-V, 3-V, 4-V, 5-F, 6-V, 7-V, 8-V, 9-V, 10-F, 11-V, 12-V, 13-V, 14-V, 15-V, 16-V, 17-F, 18-V, 19-V, 20-V, 21-V, 22-V, 23-F, 24-V, 25-V, 26-V, 27-V, 28-F, 29-V, 30-V, 31-F, 32-V, 33-V, 34-V, 35-V, 36-F, 37-V, 38-V.</p>
+        <p style="opacity:.7; font-size:0.85em;">💡 Gabarito (Complete): 39) Aleijadinho; 40) pedra-sabão; 41) claro-escuro; 42) barroco; 43) arte plumária; 44) cocares; 45) argila; 46) Palikur; 47) natureza.</p>
     `,
     'Produção Textual': `
         <h4>✍️ Exercícios — Produção Textual</h4>
