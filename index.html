@@ -643,6 +643,184 @@ body.dark .provas-container > p.sub{
 .artes{border-top:4px solid #d946ef;}
 .producaotextual{border-top:4px solid #14b8a6;}
 .materias-prova{border-top:4px solid #0ea5e9;}
+.doacao{border-top:4px solid #f43f5e;}
+
+/* ==================== DOAÇÃO ==================== */
+.doacao-container{
+    margin:40px 15px;
+}
+
+.doacao-container h2{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:28px;
+    font-weight:700;
+}
+
+.doacao-container > p.sub{
+    text-align:center;
+    opacity:.75;
+    margin-bottom:26px;
+    max-width:560px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.5;
+}
+
+.doacao-card{
+    max-width:460px;
+    margin:0 auto;
+    padding:26px 22px;
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.5);
+    backdrop-filter:blur(32px) saturate(160%);
+    -webkit-backdrop-filter:blur(32px) saturate(160%);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-top:4px solid #f43f5e;
+}
+
+.doacao-card .doacao-emoji{
+    font-size:2.4em;
+    margin-bottom:8px;
+}
+
+.doacao-chave{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    justify-content:center;
+    margin:18px 0 10px;
+    flex-wrap:wrap;
+}
+
+.doacao-chave input{
+    flex:1;
+    min-width:160px;
+    max-width:260px;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid rgba(0,0,0,0.15);
+    background:rgba(255,255,255,0.7);
+    font-size:0.95em;
+    text-align:center;
+}
+
+.doacao-copiar{
+    padding:10px 16px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background:#f43f5e;
+    color:#fff;
+    font-weight:600;
+    transition:.2s;
+}
+
+.doacao-copiar:hover{
+    background:#e11d48;
+}
+
+.doacao-msg{
+    font-size:0.85em;
+    opacity:.7;
+    margin-top:6px;
+}
+
+body.dark .doacao-card{
+    background:rgba(30,30,45,0.55);
+}
+
+body.dark .doacao-chave input{
+    background:rgba(20,20,30,0.6);
+    color:#f1f5f9;
+    border-color:rgba(255,255,255,0.2);
+}
+
+.doacao-destinatario{
+    margin:4px 0 18px;
+}
+
+.doacao-destinatario p,
+.doacao-valores p{
+    font-size:0.9em;
+    opacity:.75;
+    margin-bottom:8px;
+}
+
+.doacao-destinatario-opcoes{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.doacao-pessoa{
+    padding:8px 20px;
+    border-radius:999px;
+    border:1px solid rgba(0,0,0,0.15);
+    background:rgba(255,255,255,0.6);
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.95em;
+    transition:.2s;
+}
+
+.doacao-pessoa:hover{
+    border-color:#f43f5e;
+}
+
+.doacao-pessoa.ativo{
+    background:#f43f5e;
+    color:#fff;
+    border-color:#f43f5e;
+}
+
+.doacao-valores{
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid rgba(0,0,0,0.08);
+}
+
+.doacao-valores-botoes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+
+.doacao-valor{
+    padding:9px 15px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background:rgba(244,63,94,0.12);
+    color:#f43f5e;
+    font-weight:600;
+    font-size:0.9em;
+    transition:.2s;
+}
+
+.doacao-valor:hover{
+    background:#f43f5e;
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+body.dark .doacao-pessoa{
+    background:rgba(20,20,30,0.6);
+    color:#f1f5f9;
+    border-color:rgba(255,255,255,0.2);
+}
+
+body.dark .doacao-valores{
+    border-top-color:rgba(255,255,255,0.12);
+}
+
+body.dark .doacao-valor{
+    background:rgba(244,63,94,0.22);
+    color:#fecdd3;
+}
 
 /* ==================== CRONOGRAMA DE PROVAS ==================== */
 .cronograma-container{
@@ -1198,10 +1376,19 @@ body.dark .login-card input {
 .conta-usuario {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 100%;
+}
+
+.conta-identidade {
+    display: flex;
+    align-items: center;
     gap: 6px;
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.25);
-    padding: 4px 6px 4px 12px;
+    padding: 5px 12px;
     border-radius: 999px;
     max-width: 100%;
 }
@@ -1212,7 +1399,7 @@ body.dark .login-card input {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 110px;
+    max-width: 90px;
 }
 
 .conta-sair-btn {
@@ -1221,6 +1408,11 @@ body.dark .login-card input {
 }
 
 .conta-usuario .super-prova-btn {
+    padding: 5px 12px !important;
+    font-size: 12px !important;
+}
+
+.conta-usuario .jogo-btn {
     padding: 5px 12px !important;
     font-size: 12px !important;
 }
@@ -1529,6 +1721,340 @@ body.dark .ai-chip-sugestao{
 }
 
 .close-modal:hover { opacity: 1; }
+
+/* ⭐ SISTEMA DE ESTRELAS */
+.estrela-badge {
+    background: rgba(245,158,11,0.18);
+    color: #b45309;
+    border: 1px solid rgba(245,158,11,0.35);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+body.dark .estrela-badge {
+    background: rgba(245,158,11,0.15);
+    color: #fbbf24;
+    border-color: rgba(245,158,11,0.4);
+}
+
+.estrela-badge.admin-conquistado {
+    background: linear-gradient(120deg, #fde68a, #fca5a5);
+    color: #7c2d12;
+    border-color: transparent;
+}
+
+.btn-estrelas-admin {
+    margin-top: 8px;
+}
+
+.estrelas-add-linha {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.estrelas-add-linha input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.15);
+    font-size: 14px;
+}
+
+body.dark .estrelas-add-linha input {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.estrela-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.03);
+    margin-bottom: 8px;
+}
+
+body.dark .estrela-item {
+    background: rgba(255,255,255,0.05);
+}
+
+.estrela-item.admin-conquistado {
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+}
+
+.estrela-item-nome {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.estrela-item-nome span.nome-truncado {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.estrela-item-controles {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.estrela-item-controles button {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-estrela-menos {
+    background: rgba(239,68,68,0.15);
+    color: #b91c1c;
+}
+
+.btn-estrela-mais {
+    background: rgba(34,197,94,0.15);
+    color: #15803d;
+}
+
+.estrela-item-valor {
+    min-width: 34px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.estrelas-lista-vazio {
+    opacity: .7;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 🎲 JOGO "DIA MALUCO" — tabuleiro desbloqueado com notas acima de 8 */
+.jogo-btn {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.jogo-intro {
+    font-size: 13px;
+    opacity: .8;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.missao-do-dia {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,158,11,0.14);
+    border: 2px dashed rgba(245,158,11,0.5);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+body.dark .missao-do-dia {
+    background: rgba(245,158,11,0.12);
+    border-color: rgba(245,158,11,0.4);
+}
+
+.missao-icone {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.jogo-progresso-barra {
+    height: 10px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.jogo-progresso-barra-preenchida {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand), #f59e0b);
+    border-radius: 6px;
+    transition: width .5s ease;
+}
+
+.tabuleiro-papel {
+    background: #fffdf6;
+    border: 2.5px solid #2b2b2b;
+    border-radius: 20px;
+    padding: 18px 12px 14px;
+    position: relative;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+}
+
+body.dark .tabuleiro-papel {
+    background: #1f2430;
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+}
+
+.tabuleiro-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 16px 6px 10px;
+    border-radius: 4px 18px 18px 4px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #1f2937;
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.18);
+    border: 2px solid #2b2b2b;
+}
+
+.tabuleiro-flag.flag-chegada {
+    background: conic-gradient(from 90deg, #fca5a5, #fde68a, #a7f3d0, #93c5fd, #d8b4fe, #fca5a5);
+    transform: rotate(-2deg);
+    margin: 0 auto 14px;
+}
+
+.tabuleiro-flag.flag-inicio {
+    background: linear-gradient(120deg, #fde68a, #fca5a5);
+    transform: rotate(2deg);
+    margin: 14px auto 0;
+}
+
+.tabuleiro-flags-linha {
+    display: flex;
+    justify-content: center;
+}
+
+.tabuleiro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tabuleiro-linha {
+    display: flex;
+    gap: 8px;
+}
+
+.tabuleiro-linha.reversa {
+    flex-direction: row-reverse;
+}
+
+.casa {
+    flex: 1;
+    aspect-ratio: 1;
+    border-radius: 46% 54% 51% 49% / 51% 47% 53% 49%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    position: relative;
+    border: 2.5px solid #2b2b2b;
+    transition: transform .2s ease;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+}
+
+.casa.ultima-aberta {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 0 0 3px var(--brand), 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+.casa:nth-child(3n) { border-radius: 51% 49% 47% 53% / 49% 53% 47% 51%; }
+.casa:nth-child(3n+1) { border-radius: 44% 56% 55% 45% / 53% 45% 55% 47%; }
+
+.casa .casa-num {
+    font-size: 10px;
+    opacity: .75;
+}
+
+.casa .casa-emoji {
+    font-size: 17px;
+    line-height: 1;
+}
+
+.casa.fechada {
+    background: rgba(0,0,0,0.05);
+    color: rgba(0,0,0,0.35);
+    border-style: dashed;
+    box-shadow: none;
+}
+
+body.dark .casa.fechada {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.casa.aberta {
+    color: #1f2937;
+}
+
+.jogo-completo-msg {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(34,197,94,0.12);
+    color: #15803d;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.dark .jogo-completo-msg {
+    background: rgba(34,197,94,0.18);
+    color: #4ade80;
+}
+
+/* 🎉 aviso rápido de casa desbloqueada, some sozinho */
+.casa-desbloqueada-aviso {
+    position: fixed;
+    top: calc(16px + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brand);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 200;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: casaAvisoEntra .4s ease, casaAvisoSai .4s ease 3.2s forwards;
+}
+
+@keyframes casaAvisoEntra {
+    from { opacity: 0; transform: translate(-50%, -12px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes casaAvisoSai {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translate(-50%, -12px); }
+}
 
 #modalTexto h4 {
     margin-bottom: 10px;
@@ -2233,6 +2759,19 @@ body.tema-copa-espanha{background:linear-gradient(180deg,#fff5cc 0%,#fde68a 18%,
 body.tema-copa-italia{background:linear-gradient(180deg,#eafff0 0%,#bbf7d0 18%,#4ade80 34%,#16a34a 44%,#f8fafc 50%,#e5e7eb 62%,#f87171 78%,#7f1d1d 100%);}
 body.tema-copa-portugal{background:linear-gradient(180deg,#eafff0 0%,#bbf7d0 18%,#4ade80 34%,#16a34a 44%,#dc2626 50%,#b91c1c 62%,#7f1d1d 78%,#3f0d0d 100%);}
 body.tema-copa-inglaterra{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 18%,#e2e8f0 34%,#f8fafc 44%,#dc2626 50%,#b91c1c 62%,#7f1d1d 78%,#450a0a 100%);}
+body.tema-brainrot{
+    background:linear-gradient(135deg,#ff00cc,#3333ff,#00ffcc,#ffff00,#ff0055);
+    background-size:400% 400%;
+    animation:brainrotBg 4s ease infinite;
+}
+body.tema-brainrot, body.tema-brainrot *{
+    font-family:"Comic Sans MS","Comic Sans",cursive !important;
+}
+@keyframes brainrotBg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
 body.tema-agua .toggle, body.tema-agua .super-prova-btn, body.tema-agua #themeBtn, body.tema-agua .btn-topo, body.tema-agua .barra-flutuante button{background:linear-gradient(135deg,#dc2626,#0ea5e9)!important;box-shadow:0 0 18px rgba(37,99,235,.45)!important;color:#fff!important;}
 body.tema-festa .toggle, body.tema-festa .super-prova-btn, body.tema-festa #themeBtn, body.tema-festa .btn-topo, body.tema-festa .barra-flutuante button{background:linear-gradient(135deg,#ec4899,#a855f7)!important;box-shadow:0 0 18px rgba(236,72,153,.45)!important;color:#fff!important;}
@@ -2246,6 +2785,32 @@ body.tema-copa-espanha .toggle, body.tema-copa-espanha .super-prova-btn, body.te
 body.tema-copa-italia .toggle, body.tema-copa-italia .super-prova-btn, body.tema-copa-italia #themeBtn, body.tema-copa-italia .btn-topo, body.tema-copa-italia .barra-flutuante button{background:linear-gradient(135deg,#16a34a,#f87171)!important;box-shadow:0 0 18px rgba(22,163,74,.45)!important;color:#fff!important;}
 body.tema-copa-portugal .toggle, body.tema-copa-portugal .super-prova-btn, body.tema-copa-portugal #themeBtn, body.tema-copa-portugal .btn-topo, body.tema-copa-portugal .barra-flutuante button{background:linear-gradient(135deg,#16a34a,#dc2626)!important;box-shadow:0 0 18px rgba(22,163,74,.45)!important;color:#fff!important;}
 body.tema-copa-inglaterra .toggle, body.tema-copa-inglaterra .super-prova-btn, body.tema-copa-inglaterra #themeBtn, body.tema-copa-inglaterra .btn-topo, body.tema-copa-inglaterra .barra-flutuante button{background:linear-gradient(135deg,#dc2626,#f1f5f9)!important;box-shadow:0 0 18px rgba(220,38,38,.45)!important;color:#7f1d1d!important;}
+body.tema-brainrot .toggle, body.tema-brainrot .super-prova-btn, body.tema-brainrot #themeBtn, body.tema-brainrot .btn-topo, body.tema-brainrot .barra-flutuante button{
+    background:linear-gradient(135deg,#ff00cc,#00ffcc,#ffff00)!important;
+    background-size:300% 300%!important;
+    animation:brainrotBg 2s ease infinite!important;
+    box-shadow:0 0 22px rgba(255,0,204,.6)!important;
+    color:#000!important;
+    font-weight:900!important;
+}
+body.tema-brainrot .card, body.tema-brainrot .aviso-prova-dia, body.tema-brainrot .aviso-fim-provas{
+    animation:brainrotShake 0.35s ease-in-out infinite;
+}
+@keyframes brainrotShake{
+    0%,100%{transform:rotate(-1deg);}
+    50%{transform:rotate(1deg);}
+}
+body.tema-brainrot .tema-decor span{
+    font-size:120px !important;
+    opacity:.5 !important;
+    animation:brainrotSpin 3s linear infinite;
+    filter:drop-shadow(0 0 12px rgba(255,0,204,.6));
+}
+@keyframes brainrotSpin{
+    0%{transform:rotate(0deg) scale(1);}
+    50%{transform:rotate(180deg) scale(1.3);}
+    100%{transform:rotate(360deg) scale(1);}
+}
 
 .tema-decor{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
 .tema-decor span{position:absolute;font-size:42px;opacity:.22;}
@@ -2254,6 +2819,13 @@ body.tema-copa-inglaterra .toggle, body.tema-copa-inglaterra .super-prova-btn, b
 .tema-decor span:nth-child(3){bottom:10%;left:6%;}
 .tema-decor span:nth-child(4){bottom:12%;right:4%;}
 .tema-decor span:nth-child(5){top:45%;left:50%;transform:translateX(-50%);}
+.tema-decor span:nth-child(6){top:25%;left:20%;}
+.tema-decor span:nth-child(7){top:22%;right:18%;}
+.tema-decor span:nth-child(8){bottom:28%;left:22%;}
+.tema-decor span:nth-child(9){bottom:30%;right:20%;}
+.tema-decor span:nth-child(10){top:65%;left:8%;}
+.tema-decor span:nth-child(11){top:68%;right:9%;}
+.tema-decor span:nth-child(12){top:38%;left:12%;}
 
 .temas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;}
 .tema-opcao{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:16px;border:2px solid transparent;background:rgba(var(--brand-rgb),0.08);cursor:pointer;font-weight:600;font-size:0.85em;color:inherit;}
@@ -2322,6 +2894,39 @@ body.dark .aviso-prova-dia{
 @keyframes avisoPulso{
     0%,100%{transform:scale(1);}
     50%{transform:scale(1.18);}
+}
+
+/* ===== AVISO DE FIM DE PROVAS ===== */
+.aviso-fim-provas{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:22px 16px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(32px) saturate(160%);
+    -webkit-backdrop-filter:blur(32px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.4);
+    border-top:4px solid #f59e0b;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    margin:0 15px 18px;
+    transition:.3s;
+    font-weight:700;
+    font-size:1.1em;
+    text-align:center;
+}
+.aviso-fim-provas:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(245,158,11,0.25);
+}
+body.dark .aviso-fim-provas{
+    background:rgba(8,25,38,0.55);
+    border:1px solid rgba(255,255,255,0.12);
+    border-top:4px solid #f59e0b;
+    box-shadow:0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+    color:#fff;
 }
 .questao-ilustracao{
     display:inline-flex;
@@ -2449,8 +3054,12 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <div class="logo">📕 Study<span>7</span></div>
     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
         <div class="conta-usuario" id="contaUsuario" style="display:none;">
+            <span class="conta-identidade">
+                <span class="conta-nome" id="contaNomeExibido">👋 Aluno</span>
+                <span class="estrela-badge" id="estrelaContaBadge" title="Suas estrelas no grupo" style="display:none;">⭐ 1</span>
+            </span>
+            <button class="toggle jogo-btn" id="jogoBtn" onclick="abrirJogo()" title="Seu tabuleiro Dia Maluco">🎲 Jogo <span id="jogoBtnContador">0/20</span></button>
             <button class="toggle super-prova-btn" onclick="irParaSuperProva()">🏆 Super Prova</button>
-            <span class="conta-nome" id="contaNomeExibido">👋 Aluno</span>
             <button class="toggle conta-sair-btn" onclick="trocarConta()">Sair</button>
         </div>
         <button class="toggle" id="sugestaoBtn" onclick="abrirSugestoes()" title="Mandar sugestão pro professor">💬</button>
@@ -2463,6 +3072,8 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <p id="saudacaoAluno">Escolha uma matéria e comece agora ou pergunte para a Study IA</p>
     <p style="opacity:.75; font-size:12px; margin-top:4px;">Desenvolvido pela equipe Study7: Vitor Oliveira e Dylan Siqueira</p>
 </div>
+
+<div class="aviso-fim-provas">🎉 Só faltam mais dois dias de provas🎉</div>
 
 <!-- AVISO: atualizado automaticamente pelo JS (função atualizarAvisoProvaDia), com base no cronograma real de provas -->
 <div class="aviso-prova-dia" id="avisoProvaDia" style="display:none;">
@@ -2485,6 +3096,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
     <div class="card provas" onclick="irParaProvas()">🧾 Provas</div>
     <div class="card provas2" onclick="irParaProvas2()">🧾 Provas 2</div>
     <div class="card cronograma" onclick="irParaCronograma()">📅 Cronograma de Provas</div>
+    <div class="card doacao" onclick="irParaDoacao()">❤️‍🩹 Doação</div>
 </div>
 
 <!-- CRONOGRAMA DE PROVAS - 7002 - 2º BIMESTRE -->
@@ -2541,6 +3153,50 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
             <li>Os alunos que não estiverem em recuperação em nenhuma disciplina entrarão de férias a partir do dia 20/07.</li>
             <li>A prova terá início pontualmente no horário marcado. Em caso de atraso, o aluno deverá realizar a 2ª chamada.</li>
         </ul>
+    </div>
+</div>
+
+<!-- SEÇÃO DE DOAÇÃO -->
+<div class="doacao-container" id="secao-doacao">
+    <h2>❤️‍🩹 Apoie o Study7</h2>
+    <p class="sub">O Study7 é mantido de forma independente pela equipe Vitor Oliveira e Dylan Siqueira. Se este projeto te ajudou nos estudos, considere fazer uma doação para mantermos o site sempre no ar e com novidades. Qualquer valor faz a diferença! 🙏</p>
+
+    <div class="doacao-card">
+        <div class="doacao-emoji">🎁</div>
+        <h3>Doe via Pix</h3>
+
+        <div class="doacao-destinatario">
+            <p>Transferir para:</p>
+            <div class="doacao-destinatario-opcoes">
+                <button type="button" class="doacao-pessoa ativo" id="btnPixVitor" onclick="selecionarDestinoPix('vitor')">Vitor</button>
+                <button type="button" class="doacao-pessoa" id="btnPixDylan" onclick="selecionarDestinoPix('dylan')">Dylan</button>
+            </div>
+        </div>
+
+        <p>Chave Pix (e-mail):</p>
+        <div class="doacao-chave">
+            <input type="text" id="chavePixDoacao" value="" placeholder="Chave Pix de Vitor em breve..." readonly>
+            <button class="doacao-copiar" onclick="copiarChavePix()">📋 Copiar</button>
+        </div>
+        <p class="doacao-msg" id="doacaoCopiadoMsg" style="display:none;">Chave copiada! Obrigado pelo apoio ❤️‍🩹</p>
+
+        <div class="doacao-valores">
+            <p>Ou escolha um valor rápido:</p>
+            <div class="doacao-valores-botoes">
+                <button type="button" class="doacao-valor" onclick="doarValor(1)">Doar R$1</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(2)">Doar R$2</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(3)">Doar R$3</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(4)">Doar R$4</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(5)">Doar R$5</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(6)">Doar R$6</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(7)">Doar R$7</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(8)">Doar R$8</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(9)">Doar R$9</button>
+                <button type="button" class="doacao-valor" onclick="doarValor(10)">Doar R$10</button>
+            </div>
+        </div>
+
+        <p class="doacao-msg">Toda ajuda é muito bem-vinda e usada para melhorar o Study7.</p>
     </div>
 </div>
 
@@ -4706,6 +5362,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
             <button class="tema-opcao" data-tema="copa-italia" onclick="selecionarTema('copa-italia')"><span class="emoji">🇮🇹</span>Copa: Itália</button>
             <button class="tema-opcao" data-tema="copa-portugal" onclick="selecionarTema('copa-portugal')"><span class="emoji">🇵🇹</span>Copa: Portugal</button>
             <button class="tema-opcao" data-tema="copa-inglaterra" onclick="selecionarTema('copa-inglaterra')"><span class="emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>Copa: Inglaterra</button>
+            <button class="tema-opcao" data-tema="brainrot" onclick="selecionarTema('brainrot')"><span class="emoji">🧠</span>Brainrot</button>
         </div>
     </div>
 </div>
@@ -4743,6 +5400,7 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <h2 style="margin-bottom: 15px; color: var(--brand);">🧑‍🏫 Quem entrou no Study7</h2>
         <p style="opacity:.75; font-size:13px; margin-bottom:14px;">Todo mundo que já entrou (contas novas e retornos), de qualquer dispositivo.</p>
         <button class="btn-ver-sugestoes" onclick="fecharPainelProfessor(); abrirPainelSugestoes();">💬 Ver sugestões dos alunos →</button>
+        <button class="btn-ver-sugestoes btn-estrelas-admin" onclick="fecharPainelProfessor(); abrirEstrelasModal();">⭐ Gerenciar estrelas →</button>
         <div id="listaContasProfessor">Carregando...</div>
     </div>
 </div>
@@ -4768,6 +5426,39 @@ body.dark .tema-opcao{ background:rgba(244,241,232,0.08) !important; }
         <h2 style="margin-bottom: 15px; color: var(--brand);">💬 Sugestões dos alunos</h2>
         <p style="opacity:.75; font-size:13px; margin-bottom:14px;">Tudo que os alunos mandaram, de qualquer dispositivo.</p>
         <div id="listaSugestoesProfessor">Carregando...</div>
+    </div>
+</div>
+
+<!-- 🎲 JOGO "DIA MALUCO" — cada nota acima de 8 libera uma casa nova -->
+<div class="modal" id="jogoModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharJogo()">&times;</span>
+        <h2 style="margin-bottom: 6px; color: var(--brand);">🎲 Dia Maluco</h2>
+        <p class="jogo-intro">Toda vez que você tira uma nota acima de 8 numa prova, uma casa nova do tabuleiro é liberada. Chegue até o final! 🏁</p>
+        <div class="missao-do-dia" id="missaoDoDiaJogo" style="display:none;"></div>
+        <div class="jogo-progresso-barra"><div class="jogo-progresso-barra-preenchida" id="jogoBarraPreenchida" style="width:0%"></div></div>
+        <div class="tabuleiro-papel">
+            <div class="tabuleiro-flags-linha"><span class="tabuleiro-flag flag-chegada">🎉 CHEGADA</span></div>
+            <div class="tabuleiro" id="tabuleiroJogo"></div>
+            <div class="tabuleiro-flags-linha"><span class="tabuleiro-flag flag-inicio">🚩 INÍCIO</span></div>
+        </div>
+        <div class="jogo-completo-msg" id="jogoCompletoMsg" style="display:none;">🎉 Você completou o tabuleiro Dia Maluco! Parabéns pelo esforço nos estudos!</div>
+    </div>
+</div>
+
+<!-- ⭐ PAINEL DE ESTRELAS — só o professor/admin acessa (protegido pela mesma senha do painel do professor) -->
+<div class="modal" id="estrelasModal">
+    <div class="modal-content" style="text-align:left;">
+        <span class="close-modal" onclick="fecharEstrelasModal()">&times;</span>
+        <h2 style="margin-bottom: 6px; color: var(--brand); text-align:center;">⭐ Sistema de estrelas</h2>
+        <p style="opacity:.75; font-size:13px; margin-bottom:14px; text-align:center;">Todo mundo começa com 1 estrela. Com 5, vira admin do grupo. Punição desconta 1 estrela.</p>
+
+        <div class="estrelas-add-linha">
+            <input type="text" id="inputNovoAlunoEstrela" placeholder="Adicionar aluno pelo nome...">
+            <button class="toggle" onclick="adicionarAlunoManualEstrela()">+ Adicionar</button>
+        </div>
+
+        <div id="listaEstrelasAdmin">Carregando...</div>
     </div>
 </div>
 
@@ -5143,6 +5834,110 @@ function irParaCronograma() {
     }
 }
 
+// Rolar suavemente até a seção de doação
+function irParaDoacao() {
+    const elemento = document.getElementById('secao-doacao');
+    if(elemento) {
+        elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Chaves Pix de cada pessoa (preencher quando disponíveis)
+const chavesPixDoacao = { vitor: '', dylan: '' };
+let destinoPixAtual = 'vitor';
+
+// Alterna entre a chave Pix de Vitor e de Dylan
+function selecionarDestinoPix(pessoa) {
+    if(!chavesPixDoacao.hasOwnProperty(pessoa)) return;
+    destinoPixAtual = pessoa;
+
+    const input = document.getElementById('chavePixDoacao');
+    const btnVitor = document.getElementById('btnPixVitor');
+    const btnDylan = document.getElementById('btnPixDylan');
+    const nome = pessoa === 'vitor' ? 'Vitor' : 'Dylan';
+
+    if(input){
+        input.value = chavesPixDoacao[pessoa];
+        input.placeholder = `Chave Pix de ${nome} em breve...`;
+    }
+    if(btnVitor) btnVitor.classList.toggle('ativo', pessoa === 'vitor');
+    if(btnDylan) btnDylan.classList.toggle('ativo', pessoa === 'dylan');
+}
+
+// Copia a chave Pix para a área de transferência
+function copiarChavePix() {
+    const input = document.getElementById('chavePixDoacao');
+    const msg = document.getElementById('doacaoCopiadoMsg');
+    const nome = destinoPixAtual === 'vitor' ? 'Vitor' : 'Dylan';
+    if(!input) return;
+
+    if(!input.value.trim()){
+        if(msg){
+            msg.textContent = `Chave Pix de ${nome} ainda não cadastrada.`;
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 2500);
+        }
+        return;
+    }
+
+    const copiar = () => {
+        if(msg){
+            msg.textContent = `Chave de ${nome} copiada! Obrigado pelo apoio ❤️‍🩹`;
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 2500);
+        }
+    };
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(input.value).then(copiar).catch(() => {
+            input.select();
+            document.execCommand('copy');
+            copiar();
+        });
+    } else {
+        input.select();
+        document.execCommand('copy');
+        copiar();
+    }
+}
+
+// Copia a chave Pix da pessoa selecionada e mostra o valor sugerido de doação
+function doarValor(valor) {
+    const input = document.getElementById('chavePixDoacao');
+    const msg = document.getElementById('doacaoCopiadoMsg');
+    const nome = destinoPixAtual === 'vitor' ? 'Vitor' : 'Dylan';
+    if(!input) return;
+
+    if(!input.value.trim()){
+        if(msg){
+            msg.textContent = `Chave Pix de ${nome} ainda não cadastrada.`;
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 2500);
+        }
+        return;
+    }
+
+    const copiar = () => {
+        if(msg){
+            msg.textContent = `Chave de ${nome} copiada! Doe R$${valor} 💙`;
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 3000);
+        }
+    };
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(input.value).then(copiar).catch(() => {
+            input.select();
+            document.execCommand('copy');
+            copiar();
+        });
+    } else {
+        input.select();
+        document.execCommand('copy');
+        copiar();
+    }
+}
+
 // Rolar suavemente até a Study IA
 function irParaIA() {
     const elemento = document.getElementById('secao-ia');
@@ -5223,6 +6018,302 @@ function dispararConfetes(){
 
         setTimeout(() => confete.remove(), 5500);
     }
+}
+
+// ===== 🎲 JOGO "DIA MALUCO" — cada nota acima de 8 libera uma casa nova =====
+const CHAVE_JOGO = 'jogo:casas-desbloqueadas';
+const TOTAL_CASAS_JOGO = 20;
+const CASAS_POR_LINHA_JOGO = 5;
+
+// emoji de cada casa (visual variado, como no tabuleiro de papel)
+const EMOJIS_CASAS_JOGO = ['🎈','🍬','🎨','📖','🚲','🌈','🎵','🧩','🍕','⭐','🎪','🚀','🎯','🐶','🍦','🎁','🌟','🎧','🏆','🎉'];
+// cores pastel no estilo do tabuleiro desenhado à mão (amarelo, rosa, verde, azul, roxo...)
+const CORES_CASAS_JOGO = ['#fde68a','#fbcfe8','#a7f3d0','#bfdbfe','#ddd6fe','#fecaca','#fed7aa','#bbf7d0'];
+
+async function carregarCasasDesbloqueadas() {
+    try {
+        const atual = await window.storage.get(CHAVE_JOGO, false);
+        if(atual && atual.value) return Math.min(parseInt(atual.value, 10) || 0, TOTAL_CASAS_JOGO);
+    } catch(e) { /* ainda não jogou nenhuma vez */ }
+    return 0;
+}
+
+async function salvarCasasDesbloqueadas(quantidade) {
+    try {
+        await window.storage.set(CHAVE_JOGO, String(quantidade), false);
+    } catch(e) {
+        console.error('Não foi possível salvar o progresso do jogo:', e);
+    }
+}
+
+// Retorna os ids das matérias que valem como "missão do jogo" agora: antes das 15h,
+// é a prova de hoje; a partir das 15h, já passa a valer a prova do dia SEGUINTE
+// (mesmo deslocamento usado no aviso "hoje/amanhã é dia de prova de...").
+function idsProvaAlvoJogo() {
+    const dataRef = obterDataReferenciaAviso(new Date());
+    const chave = dataRef.getFullYear() + '-' + String(dataRef.getMonth() + 1).padStart(2, '0') + '-' + String(dataRef.getDate()).padStart(2, '0');
+    const lista = CRONOGRAMA_PROVAS[chave];
+    return lista ? lista.map(p => p.id) : [];
+}
+
+// Chamado toda vez que uma prova é corrigida com nota acima de 8.
+// Se a matéria corrigida for a "prova alvo" do jogo (agendada pra hoje, ou pra
+// amanhã depois das 15h), isso vale como missão especial e pula 2 casas em vez de 1.
+async function desbloquearCasaDoJogo(materiaId) {
+    const atual = await carregarCasasDesbloqueadas();
+    if(atual >= TOTAL_CASAS_JOGO) return; // tabuleiro já completo
+
+    const ehMissaoDoDia = !!materiaId && idsProvaAlvoJogo().includes(materiaId);
+    const avanco = ehMissaoDoDia ? 2 : 1;
+    const nova = Math.min(atual + avanco, TOTAL_CASAS_JOGO);
+
+    await salvarCasasDesbloqueadas(nova);
+    mostrarAvisoCasaDesbloqueada(nova, ehMissaoDoDia ? avanco : 1);
+    atualizarContadorBotaoJogo(nova);
+
+    // se o modal do jogo estiver aberto, atualiza o tabuleiro na hora
+    const modal = document.getElementById('jogoModal');
+    if(modal && modal.style.display === 'flex') {
+        renderizarTabuleiroJogo(nova);
+        atualizarMissaoDoDiaJogo();
+    }
+}
+
+function mostrarAvisoCasaDesbloqueada(quantidade, avanco) {
+    const aviso = document.createElement('div');
+    aviso.className = 'casa-desbloqueada-aviso';
+
+    if(quantidade >= TOTAL_CASAS_JOGO){
+        aviso.textContent = '🏁 Última casa liberada! Tabuleiro completo!';
+    } else if(avanco >= 2){
+        aviso.textContent = `🎯 Missão do dia cumprida! Você pulou 2 casas (${quantidade}/${TOTAL_CASAS_JOGO})!`;
+    } else {
+        aviso.textContent = `🎲 Casa ${quantidade}/${TOTAL_CASAS_JOGO} liberada no Dia Maluco!`;
+    }
+    document.body.appendChild(aviso);
+    setTimeout(() => aviso.remove(), 3700);
+}
+
+function atualizarContadorBotaoJogo(quantidade) {
+    const contador = document.getElementById('jogoBtnContador');
+    if(contador) contador.textContent = `${quantidade}/${TOTAL_CASAS_JOGO}`;
+}
+
+function renderizarTabuleiroJogo(desbloqueadas) {
+    const tabuleiro = document.getElementById('tabuleiroJogo');
+    if(!tabuleiro) return;
+    tabuleiro.innerHTML = '';
+
+    for(let linhaInicio = 0; linhaInicio < TOTAL_CASAS_JOGO; linhaInicio += CASAS_POR_LINHA_JOGO){
+        const linha = document.createElement('div');
+        const numeroLinha = linhaInicio / CASAS_POR_LINHA_JOGO;
+        linha.className = 'tabuleiro-linha' + (numeroLinha % 2 === 1 ? ' reversa' : '');
+
+        for(let i = linhaInicio; i < Math.min(linhaInicio + CASAS_POR_LINHA_JOGO, TOTAL_CASAS_JOGO); i++){
+            const numeroCasa = i + 1;
+            const casa = document.createElement('div');
+            const aberta = numeroCasa <= desbloqueadas;
+            casa.className = 'casa ' + (aberta ? 'aberta' : 'fechada');
+            if(aberta && numeroCasa === desbloqueadas) casa.classList.add('ultima-aberta');
+
+            let emoji = EMOJIS_CASAS_JOGO[i % EMOJIS_CASAS_JOGO.length];
+            if(numeroCasa === 1) emoji = '🚩';
+            else if(numeroCasa === TOTAL_CASAS_JOGO) emoji = '🏆';
+
+            casa.innerHTML = aberta
+                ? `<span class="casa-emoji">${emoji}</span><span class="casa-num">${numeroCasa}</span>`
+                : `<span class="casa-emoji">🔒</span><span class="casa-num">${numeroCasa}</span>`;
+
+            if(aberta) casa.style.background = CORES_CASAS_JOGO[i % CORES_CASAS_JOGO.length];
+
+            linha.appendChild(casa);
+        }
+        tabuleiro.appendChild(linha);
+    }
+
+    const barra = document.getElementById('jogoBarraPreenchida');
+    if(barra) barra.style.width = `${(desbloqueadas / TOTAL_CASAS_JOGO) * 100}%`;
+
+    const msgCompleto = document.getElementById('jogoCompletoMsg');
+    if(msgCompleto) msgCompleto.style.display = desbloqueadas >= TOTAL_CASAS_JOGO ? 'block' : 'none';
+}
+
+async function abrirJogo() {
+    const desbloqueadas = await carregarCasasDesbloqueadas();
+    renderizarTabuleiroJogo(desbloqueadas);
+    atualizarMissaoDoDiaJogo();
+    document.getElementById('jogoModal').style.display = 'flex';
+}
+
+// Mostra dentro do modal do jogo qual é a "missão do jogo": se hoje (ou já
+// amanhã, depois das 15h) tem prova marcada no cronograma, tirar acima de 8
+// nela vale 2 casas em vez de 1.
+function atualizarMissaoDoDiaJogo() {
+    const caixa = document.getElementById('missaoDoDiaJogo');
+    if(!caixa) return;
+
+    const agora = new Date();
+    const dataRef = obterDataReferenciaAviso(agora);
+    const chave = dataRef.getFullYear() + '-' + String(dataRef.getMonth() + 1).padStart(2, '0') + '-' + String(dataRef.getDate()).padStart(2, '0');
+    const ehAmanha = agora.getHours() >= 15;
+    const provasAlvo = CRONOGRAMA_PROVAS[chave];
+
+    if(!provasAlvo || provasAlvo.length === 0){
+        caixa.style.display = 'none';
+        return;
+    }
+
+    const nomes = juntarComE(provasAlvo.map(p => p.nome));
+    const icone = provasAlvo[0].icone;
+    const quando = ehAmanha ? 'amanhã' : 'hoje';
+    caixa.innerHTML = `<span class="missao-icone">🎯</span> Missão do jogo: tire acima de 8 em <b>${icone} ${nomes}</b> ${quando} e pule <b>2 casas</b> de uma vez!`;
+    caixa.style.display = 'flex';
+}
+
+function fecharJogo() {
+    document.getElementById('jogoModal').style.display = 'none';
+}
+
+// Atualiza o contador do botão assim que a conta entra
+async function iniciarContadorJogo() {
+    const desbloqueadas = await carregarCasasDesbloqueadas();
+    atualizarContadorBotaoJogo(desbloqueadas);
+}
+
+// ===== ⭐ SISTEMA DE ESTRELAS =====
+// Guardado em storage COMPARTILHADO (shared:true), porque o professor precisa
+// enxergar e editar as estrelas de todo mundo, de qualquer dispositivo — e cada
+// aluno também precisa ver a própria pontuação atualizada mesmo que a mudança
+// tenha sido feita pelo professor em outro aparelho.
+const CHAVE_ESTRELAS = 'estrelas:alunos';
+const ESTRELAS_PARA_ADMIN = 5;
+const ESTRELA_INICIAL = 1;
+
+// Normaliza o nome pra usar como chave (mesmo nome com maiúsculas/espaços diferentes = mesma pessoa)
+function chaveEstrelaDoNome(nome) {
+    return nome.trim().toLowerCase();
+}
+
+async function carregarEstrelas() {
+    try {
+        const atual = await window.storage.get(CHAVE_ESTRELAS, true);
+        if(atual && atual.value) return JSON.parse(atual.value);
+    } catch(e) { /* ainda não existe registro de estrelas */ }
+    return {};
+}
+
+async function salvarEstrelas(registro) {
+    try {
+        await window.storage.set(CHAVE_ESTRELAS, JSON.stringify(registro), true);
+    } catch(e) {
+        console.error('Não foi possível salvar as estrelas:', e);
+    }
+    return registro;
+}
+
+// Garante que o aluno tenha um registro de estrela ao entrar (não mexe se já existir)
+async function garantirRegistroEstrela(nomeOriginal) {
+    const registro = await carregarEstrelas();
+    const chave = chaveEstrelaDoNome(nomeOriginal);
+
+    if(!registro[chave]){
+        registro[chave] = { nome: nomeOriginal, estrelas: ESTRELA_INICIAL };
+        await salvarEstrelas(registro);
+    }
+
+    return registro[chave].estrelas;
+}
+
+// Atualiza o badge de estrelas do próprio aluno no cabeçalho
+async function atualizarBadgeEstrelaConta(nomeOriginal) {
+    const badge = document.getElementById('estrelaContaBadge');
+    if(!badge || !nomeOriginal) return;
+
+    const estrelas = await garantirRegistroEstrela(nomeOriginal);
+    badge.textContent = `⭐ ${estrelas}`;
+    badge.classList.toggle('admin-conquistado', estrelas >= ESTRELAS_PARA_ADMIN);
+    if(estrelas >= ESTRELAS_PARA_ADMIN) badge.textContent = `👑 ${estrelas}`;
+    badge.style.display = 'inline-flex';
+}
+
+async function abrirEstrelasModal() {
+    if(!professorAutenticado){
+        const senha = window.prompt('Senha do professor:');
+        if(senha === null) return;
+        if(senha.trim() !== SENHA_PROFESSOR){
+            alert('Senha incorreta.');
+            return;
+        }
+        professorAutenticado = true;
+    }
+
+    document.getElementById('estrelasModal').style.display = 'flex';
+    await renderizarListaEstrelas();
+}
+
+function fecharEstrelasModal() {
+    document.getElementById('estrelasModal').style.display = 'none';
+}
+
+async function renderizarListaEstrelas() {
+    const lista = document.getElementById('listaEstrelasAdmin');
+    lista.textContent = 'Carregando...';
+
+    const registro = await carregarEstrelas();
+    const chaves = Object.keys(registro);
+
+    if(chaves.length === 0){
+        lista.innerHTML = '<div class="estrelas-lista-vazio">Nenhum aluno registrado ainda. Adicione um nome acima ou espere alguém entrar no app.</div>';
+        return;
+    }
+
+    // Ordena por mais estrelas primeiro, depois por nome
+    chaves.sort((a, b) => {
+        const diff = registro[b].estrelas - registro[a].estrelas;
+        if(diff !== 0) return diff;
+        return registro[a].nome.localeCompare(registro[b].nome);
+    });
+
+    lista.innerHTML = chaves.map(chave => {
+        const pessoa = registro[chave];
+        const ehAdmin = pessoa.estrelas >= ESTRELAS_PARA_ADMIN;
+        return `<div class="estrela-item ${ehAdmin ? 'admin-conquistado' : ''}">
+            <div class="estrela-item-nome">
+                ${ehAdmin ? '👑' : '⭐'} <span class="nome-truncado">${pessoa.nome}</span>
+            </div>
+            <div class="estrela-item-controles">
+                <button class="btn-estrela-menos" onclick="ajustarEstrela('${chave}', -1)">−</button>
+                <span class="estrela-item-valor">${pessoa.estrelas}</span>
+                <button class="btn-estrela-mais" onclick="ajustarEstrela('${chave}', 1)">+</button>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+async function ajustarEstrela(chave, delta) {
+    const registro = await carregarEstrelas();
+    if(!registro[chave]) return;
+
+    registro[chave].estrelas = Math.max(0, registro[chave].estrelas + delta);
+    await salvarEstrelas(registro);
+    await renderizarListaEstrelas();
+}
+
+async function adicionarAlunoManualEstrela() {
+    const input = document.getElementById('inputNovoAlunoEstrela');
+    const nome = input.value.trim();
+    if(!nome) return;
+
+    const registro = await carregarEstrelas();
+    const chave = chaveEstrelaDoNome(nome);
+
+    if(!registro[chave]){
+        registro[chave] = { nome, estrelas: ESTRELA_INICIAL };
+        await salvarEstrelas(registro);
+    }
+
+    input.value = '';
+    await renderizarListaEstrelas();
 }
 
 // Pega o texto de uma pergunta sem incluir o botão "Marcar/Marcada",
@@ -5310,6 +6401,7 @@ async function corrigirProva(materia, gabarito) {
     if(parseFloat(nota) > 8){
         dispararConfetes();
         tocarSomAcao('sucesso');
+        desbloquearCasaDoJogo(materia);
     } else if(parseFloat(nota) < 5){
         tocarSomAcao('erro');
     } else {
@@ -6085,9 +7177,10 @@ const TEMA_EMOJIS = {
     'copa-espanha': ['⚽','🏆','🇪🇸','🥅','🌟'],
     'copa-italia': ['⚽','🏆','🇮🇹','🥅','🌟'],
     'copa-portugal': ['⚽','🏆','🇵🇹','🥅','🌟'],
-    'copa-inglaterra': ['⚽','🏆','🏴󠁧󠁢󠁥󠁮󠁧󠁿','🥅','🌟']
+    'copa-inglaterra': ['⚽','🏆','🏴󠁧󠁢󠁥󠁮󠁧󠁿','🥅','🌟'],
+    'brainrot': ['🧠','💀','🗿','🚽','🐊','🦈','👹','🐸','🥶','🔥','😭','6️⃣7️⃣']
 };
-const TODOS_TEMAS = ['tema-agua','tema-festa','tema-natal','tema-halloween','tema-copa-brasil','tema-copa-argentina','tema-copa-alemanha','tema-copa-franca','tema-copa-espanha','tema-copa-italia','tema-copa-portugal','tema-copa-inglaterra'];
+const TODOS_TEMAS = ['tema-agua','tema-festa','tema-natal','tema-halloween','tema-copa-brasil','tema-copa-argentina','tema-copa-alemanha','tema-copa-franca','tema-copa-espanha','tema-copa-italia','tema-copa-portugal','tema-copa-inglaterra','tema-brainrot'];
 function aplicarDecoracaoTema(tema){
     const decor = document.getElementById('temaDecor');
     if(!decor) return;
@@ -6098,6 +7191,15 @@ function selecionarTema(tema){
     if(tema !== 'padrao') document.body.classList.add('tema-' + tema);
     document.querySelectorAll('.tema-opcao').forEach(b => b.classList.toggle('ativo', b.dataset.tema === tema));
     aplicarDecoracaoTema(tema);
+    // Se o som já estiver ligado, troca entre música ambiente e voz brainrot conforme o novo tema
+    if(typeof musicaAtiva !== 'undefined' && musicaAtiva){
+        pararMusicaFundo();
+        pararVozBrainrot();
+        setTimeout(() => {
+            if(tema === 'brainrot') iniciarVozBrainrot();
+            else iniciarMusicaFundo();
+        }, 500);
+    }
     try{ window.storage.set('config:tema', tema, false); }catch(e){ /* ignora */ }
 }
 function abrirTemas(){ document.getElementById('temasModal').style.display = 'flex'; }
@@ -6763,6 +7865,8 @@ function entrarComNome(nome, salvar){
     const nomeExibido = document.getElementById('contaNomeExibido');
     if(badge) badge.style.display = 'flex';
     if(nomeExibido) nomeExibido.textContent = `👋 ${primeiroNome}`;
+    iniciarContadorJogo();
+    atualizarBadgeEstrelaConta(primeiroNome);
 
     const saudacao = document.getElementById('saudacaoAluno');
     if(saudacao) saudacao.textContent = `Bem-vindo(a), ${primeiroNome}! Escolha uma matéria e comece agora ou pergunte para a Study IA.`;
@@ -7449,15 +8553,88 @@ function pararMusicaFundo(){
     musicaNos = [];
 }
 
+// Nomes de memes "brainrot" que a voz do navegador fala quando esse tema está ativo (só os nomes, sem áudio de terceiros)
+const NOMES_BRAINROT = [
+    'Tung tung tung tung tung sahur',
+    'Tralalero tralala',
+    'Bombardiro crocodilo',
+    'Capuccino assassino',
+    'Ballerina cappuccina',
+    'Brr brr patapim',
+    'Lirili larila',
+    'Chimpanzini bananini'
+];
+let vozBrainrotAtiva = false;
+let vozBrainrotTimeoutId = null;
+let vozItalianaEscolhida = null;
+let vozesCarregadas = false;
+
+// Escolhe, se existir, uma voz instalada no aparelho com sotaque italiano; senão usa a voz padrão do navegador
+// (forçar um idioma sem voz correspondente faz a fala falhar em silêncio em vários navegadores/celulares)
+function prepararVozesBrainrot(){
+    if(!('speechSynthesis' in window)) return;
+    const vozes = window.speechSynthesis.getVoices();
+    if(vozes && vozes.length){
+        vozItalianaEscolhida = vozes.find(v => v.lang && v.lang.toLowerCase().startsWith('it')) || null;
+        vozesCarregadas = true;
+    }
+}
+if('speechSynthesis' in window){
+    prepararVozesBrainrot();
+    window.speechSynthesis.onvoiceschanged = prepararVozesBrainrot;
+}
+
+function falarProximoNomeBrainrot(){
+    if(!vozBrainrotAtiva) return;
+    if(!('speechSynthesis' in window)){
+        vozBrainrotTimeoutId = setTimeout(falarProximoNomeBrainrot, 2500);
+        return;
+    }
+    const nome = NOMES_BRAINROT[Math.floor(Math.random() * NOMES_BRAINROT.length)];
+    const fala = new SpeechSynthesisUtterance(nome);
+    // só define idioma/voz se realmente existir uma instalada; caso contrário deixa o padrão do sistema
+    if(vozItalianaEscolhida){
+        fala.voice = vozItalianaEscolhida;
+        fala.lang = vozItalianaEscolhida.lang;
+    }
+    fala.rate = 1.05;
+    fala.pitch = 1.3;
+    fala.volume = 1;
+    fala.onend = falarProximoNomeBrainrot;
+    fala.onerror = () => { setTimeout(falarProximoNomeBrainrot, 300); }; // evita loop travado se a fala falhar repetidamente
+    try{ window.speechSynthesis.speak(fala); }catch(e){ setTimeout(falarProximoNomeBrainrot, 300); }
+}
+
+function iniciarVozBrainrot(){
+    vozBrainrotAtiva = true;
+    if('speechSynthesis' in window){
+        window.speechSynthesis.cancel(); // limpa qualquer fila travada de fala anterior
+        if(!vozesCarregadas) prepararVozesBrainrot();
+    }
+    falarProximoNomeBrainrot();
+}
+
+function pararVozBrainrot(){
+    vozBrainrotAtiva = false;
+    clearTimeout(vozBrainrotTimeoutId);
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
+
 function alternarMusica(){
     const botoes = [document.getElementById('musicaBtn'), document.getElementById('musicaBtnConfig')].filter(Boolean);
     musicaAtiva = !musicaAtiva;
+    const modoBrainrot = document.body.classList.contains('tema-brainrot');
 
     if(musicaAtiva){
-        iniciarMusicaFundo();
-        botoes.forEach(btn => { btn.textContent = '🎵'; btn.title = 'Pausar música de fundo'; });
+        if(modoBrainrot){
+            iniciarVozBrainrot();
+        } else {
+            iniciarMusicaFundo();
+        }
+        botoes.forEach(btn => { btn.textContent = '🎵'; btn.title = modoBrainrot ? 'Pausar vozes brainrot' : 'Pausar música de fundo'; });
     } else {
         pararMusicaFundo();
+        pararVozBrainrot();
         botoes.forEach(btn => { btn.textContent = '🔇'; btn.title = 'Tocar música de fundo'; });
     }
 
@@ -7541,6 +8718,7 @@ window.addEventListener("load", function(){
     const iconesPorMateria = aplicarIlustracoesTopicos();
     aplicarIlustracoesCards(iconesPorMateria);
     atualizarTodosProgressos();
+    iniciarContadorJogo();
     mostrarProva('provao'); // exibe uma prova por vez (evita mostrar todas ao mesmo tempo no PC)
 
     // Restaura o tema visual salvo (padrão, água, festa, natal, halloween, copa por país)
